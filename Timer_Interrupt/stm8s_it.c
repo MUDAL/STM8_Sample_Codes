@@ -42,7 +42,7 @@ static volatile uint32_t currTime = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
-extern void TIM1_Delay(uint32_t delayMs)
+void TIM1_Delay(uint32_t delayMs)
 {
 	uint32_t t = currTime;
   while((currTime - t) <= delayMs){}
