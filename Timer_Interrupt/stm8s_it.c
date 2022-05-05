@@ -45,7 +45,7 @@ static volatile uint32_t currTime = 0;
 void TIM1_Delay(uint32_t delayMs)
 {
 	uint32_t t = currTime;
-  while((currTime - t) <= delayMs){}
+  while((currTime - t) < delayMs){}
 }
 
 #ifdef _COSMIC_
