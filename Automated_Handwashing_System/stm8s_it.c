@@ -38,7 +38,8 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-static volatile uint32_t currentTick = 0;
+static volatile uint32_t currentTick;
+static volatile uint8_t toggleLED;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
@@ -51,6 +52,16 @@ void DelayMs(uint32_t delay)
 uint32_t GetTick(void)
 {
 	return currentTick;
+}
+
+void ToggleLED(void)
+{
+	toggleLED = 1;
+}
+
+void DisableLED(void)
+{
+	toggleLED = 0;
 }
 
 #ifdef _COSMIC_
@@ -292,6 +303,39 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
+	//Read fan and water sensors and drive their actuators
+	if(!GPIO_ReadInputPin(FAN_SENSOR_PORT,FAN_SENSOR))
+	{//Sensor state is '0' when obstacle is detected
+		GPIO_WriteHigh(FAN_PORT,FAN);
+	}
+	else
+	{
+		GPIO_WriteLow(FAN_PORT,FAN);
+	}
+	
+	if(!GPIO_ReadInputPin(WATER_SENSOR_PORT,WATER_SENSOR))
+	{
+		GPIO_WriteHigh(WATER_VALVE_PORT,WATER_VALVE);
+	}
+	else
+	{
+		GPIO_WriteLow(WATER_VALVE_PORT,WATER_VALVE);
+	}	
+
+	if(toggleLED)
+	{//Toggle LED every second
+		static uint16_t ledCounter;
+		if((ledCounter % 1000) == 0)
+		{
+			GPIO_WriteReverse(LED_PORT,LED);
+		}
+		ledCounter++;
+	}
+	else
+	{
+		GPIO_WriteLow(LED_PORT,LED);
+	}
+	TIM2_ClearITPendingBit(TIM2_IT_UPDATE);
  }
 
 /**

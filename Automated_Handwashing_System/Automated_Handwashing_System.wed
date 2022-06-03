@@ -330,10 +330,10 @@ BarID=59647
 MRUWidth=412
 Docking=True
 MRUDockID=59419
-MRUDockLeftPos=8
-MRUDockTopPos=31
-MRUDockRightPos=1374
-MRUDockBottomPos=60
+MRUDockLeftPos=-1
+MRUDockTopPos=-1
+MRUDockRightPos=1365
+MRUDockBottomPos=28
 MRUFloatStyle=8196
 MRUFloatXPos=-1
 MRUFloatYPos=0
@@ -758,10 +758,10 @@ XPos=1
 YPos=5
 Docking=True
 MRUDockID=0
-MRUDockLeftPos=8
-MRUDockTopPos=31
-MRUDockRightPos=1373
-MRUDockBottomPos=181
+MRUDockLeftPos=1
+MRUDockTopPos=5
+MRUDockRightPos=1366
+MRUDockBottomPos=155
 MRUFloatStyle=4
 MRUFloatXPos=-1
 MRUFloatYPos=0
@@ -1239,7 +1239,7 @@ ptn_Child1=MainFrame
 ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPACCAAAAAJMAAAAAANMFAAAAAIGDAAAAA
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPACCAAAAAJMAAAAAANMFAAAAAIGDAAAAA
 Title=ST Visual Develop - Automated_Handwashing_System.stw - [main.c]
 
 [WorkState_v1_2.Frames.ChildFrames]
@@ -1247,6 +1247,7 @@ ptn_Child1=Document-0
 ptn_Child2=Document-1
 ptn_Child3=Document-2
 ptn_Child4=Document-3
+ptn_Child5=Document-4
 
 [WorkState_v1_2.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
@@ -1288,6 +1289,17 @@ ptn_Child1=ViewFrame-0
 DocPathName=inc\stm8s.h
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAHMDAAAAANFBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAAJHDAAAAAPABAAAAA
+IsActiveChildFrame=False
+IsFrameVisible=True
+
+[WorkState_v1_2.Frames.ChildFrames.Document-4]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_2.Frames.ChildFrames.Document-4.ViewFrame-0]
+DocPathName=src\stm8s_gpio.c
+DocumentString=
+DocTemplateIndex=0
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPKBAAAAAAKBAAAAAADJDAAAAAJCBAAAAA
 IsActiveChildFrame=False
 IsFrameVisible=True

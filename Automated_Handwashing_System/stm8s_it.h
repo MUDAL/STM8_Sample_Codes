@@ -33,9 +33,38 @@
 #include "stm8s.h"
 
 /* Exported types ------------------------------------------------------------*/
+#define SENSOR_INIT					GPIO_MODE_IN_PU_NO_IT
+#define OUTPUT_INIT 				GPIO_MODE_OUT_OD_LOW_FAST
+
+#define SOAP_SENSOR_PORT    GPIOB
+#define SOAP_SENSOR 				GPIO_PIN_0
+
+#define FAN_SENSOR_PORT			GPIOB
+#define FAN_SENSOR					GPIO_PIN_1
+
+#define WATER_SENSOR_PORT		GPIOB
+#define WATER_SENSOR 				GPIO_PIN_2
+
+#define SOAP_VALVE_PORT			GPIOB
+#define SOAP_VALVE    			GPIO_PIN_3
+
+#define FAN_PORT						GPIOB
+#define FAN									GPIO_PIN_4
+
+#define WATER_VALVE_PORT		GPIOB
+#define WATER_VALVE   			GPIO_PIN_5
+
+#define LED_PORT						GPIOF
+#define LED									GPIO_PIN_4
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+void DelayMs(uint32_t delay);
+uint32_t GetTick(void);
+void ToggleLED(void);
+void DisableLED(void);
+
+
 #ifdef _COSMIC_
  void _stext(void); /* RESET startup routine */
  INTERRUPT void NonHandledInterrupt(void);
