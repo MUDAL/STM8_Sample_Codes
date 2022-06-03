@@ -48,6 +48,11 @@ void DelayMs(uint32_t delay)
 	while((currentTick - startTick) < delay){}
 }
 
+uint32_t GetTick(void)
+{
+	return currentTick;
+}
+
 #ifdef _COSMIC_
 /**
   * @brief Dummy Interrupt routine

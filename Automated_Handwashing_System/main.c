@@ -30,6 +30,11 @@
 #define NUM_SENSORS			3
 #define NUM_ACTUATORS		4
 
+//Exported function(s)
+//from stm8s_it.c
+void DelayMs(uint32_t delay);
+uint32_t GetTick(void);
+
 //Sensor
 typedef struct
 {
@@ -106,10 +111,36 @@ static void Actuator_Write(actuator_t* actuator,
 	}
 }
 
-static void ControlSoapFlow(sensor_t* sensor,
-														actuator_t* actuator)
+static void ControlTimedOutput(sensor_t* sensor,
+														   actuator_t* actuator,
+															 uint32_t actuationTime,
+															 uint32_t shutOffTime)
 {
-	//Place code here
+	static uint8_t sensorDeactivated;
+	static uint32_t currentTick;
+		
+	if(!sensorDeactivated)
+	{
+		if(Sensor_FoundObstacle(sensor))
+		{
+			Actuator_Write(actuator,ON);
+			DelayMs(actuationTime);
+			Actuator_Write(actuator,OFF);
+			sensorDeactivated = 1;
+			currentTick = GetTick();
+		}
+		else
+		{
+			Actuator_Write(actuator,OFF);
+		}
+	}
+	else
+	{
+		if((GetTick() - currentTick) >= shutOffTime)
+		{
+			sensorDeactivated = 0;
+		}
+	}
 }
 
 static void ReadSensorDriveOutput(sensor_t* sensor,
@@ -125,11 +156,11 @@ static void ReadSensorDriveOutput(sensor_t* sensor,
 	}	
 }
 
-//Exported function(s)
-void DelayMs(uint32_t delay); //from stm8s_it.c
-
 int main(void)
 {
+	//Variable(s)
+	uint32_t soapDispensationTime = 10000; //10 secs
+	uint32_t soapValveShutOffTime = 60000; //1 minute
 	//Sensor(s)
 	sensor_t soapSensor = {GPIOB,GPIO_PIN_0};
 	sensor_t fanSensor = {GPIOB,GPIO_PIN_1};
@@ -163,7 +194,9 @@ int main(void)
 	while (1)
 	{
 		//Read soap sensor, dispense soap, start timer
-		ControlSoapFlow(&soapSensor,&soapValve);
+		ControlTimedOutput(&soapSensor,&soapValve,
+											 soapDispensationTime,
+											 soapValveShutOffTime);
 		//Read other sensors and drive their actuators
 		ReadSensorDriveOutput(&fanSensor,&fan);
 		ReadSensorDriveOutput(&waterSensor,&waterValve);
