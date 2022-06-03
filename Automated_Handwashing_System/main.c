@@ -78,6 +78,7 @@ static void Actuator_Init(actuator_t* actuator)
 {
 	GPIO_Init(actuator->port,actuator->pin,
 						GPIO_MODE_OUT_OD_LOW_FAST);
+	GPIO_WriteLow(actuator->port,actuator->pin);
 }
 
 static void Actuator_MultiInit(actuator_t* actuators[],
@@ -105,8 +106,8 @@ static void Actuator_Write(actuator_t* actuator,
 	}
 }
 
-static void TimedOutputControl(sensor_t* sensor,
-															 actuator_t* actuator)
+static void ControlSoapFlow(sensor_t* sensor,
+														actuator_t* actuator)
 {
 	//Place code here
 }
@@ -123,6 +124,9 @@ static void ReadSensorDriveOutput(sensor_t* sensor,
 		Actuator_Write(actuator,OFF);
 	}	
 }
+
+//Exported function(s)
+void DelayMs(uint32_t delay); //from stm8s_it.c
 
 int main(void)
 {
@@ -147,10 +151,19 @@ int main(void)
 	Sensor_MultiInit(sensors,NUM_SENSORS);
 	Actuator_MultiInit(actuators,NUM_ACTUATORS);
 	
+	//Initialize timer
+	//Clock = 16MHz, Prescaler = 128, Timer period = 124
+	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);				 
+	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
+	TIM1_ITConfig(TIM1_IT_UPDATE,ENABLE);
+	TIM1_Cmd(ENABLE);
+	
+	enableInterrupts();
+	
 	while (1)
 	{
 		//Read soap sensor, dispense soap, start timer
-		TimedOutputControl(&soapSensor,&soapValve);
+		ControlSoapFlow(&soapSensor,&soapValve);
 		//Read other sensors and drive their actuators
 		ReadSensorDriveOutput(&fanSensor,&fan);
 		ReadSensorDriveOutput(&waterSensor,&waterValve);

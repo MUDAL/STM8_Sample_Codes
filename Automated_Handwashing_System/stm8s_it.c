@@ -38,9 +38,16 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+static volatile uint32_t currentTick = 0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
+void DelayMs(uint32_t delay)
+{
+	uint32_t startTick = currentTick;
+	while((currentTick - startTick) < delay){}
+}
+
 #ifdef _COSMIC_
 /**
   * @brief Dummy Interrupt routine
@@ -228,6 +235,8 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
+	currentTick++;
+	TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 }
 
 /**
