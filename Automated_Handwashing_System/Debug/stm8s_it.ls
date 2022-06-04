@@ -34,18 +34,18 @@
  130  0023 ae0003        	ldw	x,#L3_currentTick
  131  0026 cd0000        	call	c_ltor
  135  0029 81            	ret
- 159                     ; 57 void ToggleLED(void)
+ 159                     ; 57 void StartTogglingLED(void)
  159                     ; 58 {
  160                     	switch	.text
- 161  002a               _ToggleLED:
+ 161  002a               _StartTogglingLED:
  165                     ; 59 	toggleLED = 1;
  167  002a 35010002      	mov	L5_toggleLED,#1
  168                     ; 60 }
  171  002e 81            	ret
- 195                     ; 62 void DisableLED(void)
+ 195                     ; 62 void StopTogglingLED(void)
  195                     ; 63 {
  196                     	switch	.text
- 197  002f               _DisableLED:
+ 197  002f               _StopTogglingLED:
  201                     ; 64 	toggleLED = 0;
  203  002f 3f02          	clr	L5_toggleLED
  204                     ; 65 }
@@ -213,139 +213,140 @@
  763  00be               L572:
  764                     ; 325 	if(toggleLED)
  766  00be 3d02          	tnz	L5_toggleLED
- 767  00c0 271f          	jreq	L772
- 768                     ; 328 		if((ledCounter % 1000) == 0)
+ 767  00c0 271e          	jreq	L772
+ 768                     ; 328 		if((ledCounter % 100) == 0)
  770  00c2 be00          	ldw	x,L742_ledCounter
- 771  00c4 90ae03e8      	ldw	y,#1000
- 772  00c8 65            	divw	x,y
- 773  00c9 51            	exgw	x,y
- 774  00ca a30000        	cpw	x,#0
- 775  00cd 2609          	jrne	L103
- 776                     ; 330 			GPIO_WriteReverse(LED_PORT,LED);
- 778  00cf 4b10          	push	#16
- 779  00d1 ae5019        	ldw	x,#20505
- 780  00d4 cd0000        	call	_GPIO_WriteReverse
- 782  00d7 84            	pop	a
- 783  00d8               L103:
- 784                     ; 332 		ledCounter++;
- 786  00d8 be00          	ldw	x,L742_ledCounter
- 787  00da 1c0001        	addw	x,#1
- 788  00dd bf00          	ldw	L742_ledCounter,x
- 790  00df 2009          	jra	L303
- 791  00e1               L772:
- 792                     ; 336 		GPIO_WriteLow(LED_PORT,LED);
- 794  00e1 4b10          	push	#16
- 795  00e3 ae5019        	ldw	x,#20505
- 796  00e6 cd0000        	call	_GPIO_WriteLow
- 798  00e9 84            	pop	a
- 799  00ea               L303:
- 800                     ; 338 	TIM2_ClearITPendingBit(TIM2_IT_UPDATE);
- 802  00ea a601          	ld	a,#1
- 803  00ec cd0000        	call	_TIM2_ClearITPendingBit
- 805                     ; 339  }
- 808  00ef 85            	popw	x
- 809  00f0 bf00          	ldw	c_y,x
- 810  00f2 320002        	pop	c_y+2
- 811  00f5 85            	popw	x
- 812  00f6 bf00          	ldw	c_x,x
- 813  00f8 320002        	pop	c_x+2
- 814  00fb 80            	iret
- 837                     ; 346  INTERRUPT_HANDLER(TIM2_CAP_COM_IRQHandler, 14)
- 837                     ; 347  {
- 838                     	switch	.text
- 839  00fc               f_TIM2_CAP_COM_IRQHandler:
- 843                     ; 351  }
- 846  00fc 80            	iret
- 869                     ; 361  INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
- 869                     ; 362  {
- 870                     	switch	.text
- 871  00fd               f_TIM3_UPD_OVF_BRK_IRQHandler:
- 875                     ; 366  }
- 878  00fd 80            	iret
- 901                     ; 373  INTERRUPT_HANDLER(TIM3_CAP_COM_IRQHandler, 16)
- 901                     ; 374  {
- 902                     	switch	.text
- 903  00fe               f_TIM3_CAP_COM_IRQHandler:
- 907                     ; 378  }
- 910  00fe 80            	iret
- 932                     ; 439 INTERRUPT_HANDLER(I2C_IRQHandler, 19)
- 932                     ; 440 {
- 933                     	switch	.text
- 934  00ff               f_I2C_IRQHandler:
- 938                     ; 444 }
- 941  00ff 80            	iret
- 964                     ; 452  INTERRUPT_HANDLER(UART2_TX_IRQHandler, 20)
- 964                     ; 453  {
- 965                     	switch	.text
- 966  0100               f_UART2_TX_IRQHandler:
- 970                     ; 457  }
- 973  0100 80            	iret
- 996                     ; 464  INTERRUPT_HANDLER(UART2_RX_IRQHandler, 21)
- 996                     ; 465  {
- 997                     	switch	.text
- 998  0101               f_UART2_RX_IRQHandler:
-1002                     ; 469  }
-1005  0101 80            	iret
-1027                     ; 518  INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
-1027                     ; 519  {
-1028                     	switch	.text
-1029  0102               f_ADC1_IRQHandler:
-1033                     ; 523  }
-1036  0102 80            	iret
-1059                     ; 544  INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
-1059                     ; 545  {
-1060                     	switch	.text
-1061  0103               f_TIM4_UPD_OVF_IRQHandler:
-1065                     ; 549  }
-1068  0103 80            	iret
-1091                     ; 557 INTERRUPT_HANDLER(EEPROM_EEC_IRQHandler, 24)
-1091                     ; 558 {
-1092                     	switch	.text
-1093  0104               f_EEPROM_EEC_IRQHandler:
-1097                     ; 562 }
-1100  0104 80            	iret
-1132                     	switch	.ubsct
-1133  0002               L5_toggleLED:
-1134  0002 00            	ds.b	1
-1135  0003               L3_currentTick:
-1136  0003 00000000      	ds.b	4
-1137                     	xdef	f_EEPROM_EEC_IRQHandler
-1138                     	xdef	f_TIM4_UPD_OVF_IRQHandler
-1139                     	xdef	f_ADC1_IRQHandler
-1140                     	xdef	f_UART2_TX_IRQHandler
-1141                     	xdef	f_UART2_RX_IRQHandler
-1142                     	xdef	f_I2C_IRQHandler
-1143                     	xdef	f_TIM3_CAP_COM_IRQHandler
-1144                     	xdef	f_TIM3_UPD_OVF_BRK_IRQHandler
-1145                     	xdef	f_TIM2_CAP_COM_IRQHandler
-1146                     	xdef	f_TIM2_UPD_OVF_BRK_IRQHandler
-1147                     	xdef	f_TIM1_UPD_OVF_TRG_BRK_IRQHandler
-1148                     	xdef	f_TIM1_CAP_COM_IRQHandler
-1149                     	xdef	f_SPI_IRQHandler
-1150                     	xdef	f_EXTI_PORTE_IRQHandler
-1151                     	xdef	f_EXTI_PORTD_IRQHandler
-1152                     	xdef	f_EXTI_PORTC_IRQHandler
-1153                     	xdef	f_EXTI_PORTB_IRQHandler
-1154                     	xdef	f_EXTI_PORTA_IRQHandler
-1155                     	xdef	f_CLK_IRQHandler
-1156                     	xdef	f_AWU_IRQHandler
-1157                     	xdef	f_TLI_IRQHandler
-1158                     	xdef	f_TRAP_IRQHandler
-1159                     	xdef	f_NonHandledInterrupt
-1160                     	xdef	_DisableLED
-1161                     	xdef	_ToggleLED
-1162                     	xdef	_GetTick
-1163                     	xdef	_DelayMs
-1164                     	xref	_TIM2_ClearITPendingBit
-1165                     	xref	_TIM1_ClearITPendingBit
-1166                     	xref	_GPIO_ReadInputPin
-1167                     	xref	_GPIO_WriteReverse
-1168                     	xref	_GPIO_WriteLow
-1169                     	xref	_GPIO_WriteHigh
-1170                     	xref.b	c_x
-1171                     	xref.b	c_y
-1191                     	xref	c_lgadc
-1192                     	xref	c_lcmp
-1193                     	xref	c_lsub
-1194                     	xref	c_ltor
-1195                     	end
+ 771  00c4 a664          	ld	a,#100
+ 772  00c6 62            	div	x,a
+ 773  00c7 5f            	clrw	x
+ 774  00c8 97            	ld	xl,a
+ 775  00c9 a30000        	cpw	x,#0
+ 776  00cc 2609          	jrne	L103
+ 777                     ; 330 			GPIO_WriteReverse(LED_PORT,LED);
+ 779  00ce 4b10          	push	#16
+ 780  00d0 ae5019        	ldw	x,#20505
+ 781  00d3 cd0000        	call	_GPIO_WriteReverse
+ 783  00d6 84            	pop	a
+ 784  00d7               L103:
+ 785                     ; 332 		ledCounter++;
+ 787  00d7 be00          	ldw	x,L742_ledCounter
+ 788  00d9 1c0001        	addw	x,#1
+ 789  00dc bf00          	ldw	L742_ledCounter,x
+ 791  00de 2009          	jra	L303
+ 792  00e0               L772:
+ 793                     ; 336 		GPIO_WriteLow(LED_PORT,LED);
+ 795  00e0 4b10          	push	#16
+ 796  00e2 ae5019        	ldw	x,#20505
+ 797  00e5 cd0000        	call	_GPIO_WriteLow
+ 799  00e8 84            	pop	a
+ 800  00e9               L303:
+ 801                     ; 338 	TIM2_ClearITPendingBit(TIM2_IT_UPDATE);
+ 803  00e9 a601          	ld	a,#1
+ 804  00eb cd0000        	call	_TIM2_ClearITPendingBit
+ 806                     ; 339  }
+ 809  00ee 85            	popw	x
+ 810  00ef bf00          	ldw	c_y,x
+ 811  00f1 320002        	pop	c_y+2
+ 812  00f4 85            	popw	x
+ 813  00f5 bf00          	ldw	c_x,x
+ 814  00f7 320002        	pop	c_x+2
+ 815  00fa 80            	iret
+ 838                     ; 346  INTERRUPT_HANDLER(TIM2_CAP_COM_IRQHandler, 14)
+ 838                     ; 347  {
+ 839                     	switch	.text
+ 840  00fb               f_TIM2_CAP_COM_IRQHandler:
+ 844                     ; 351  }
+ 847  00fb 80            	iret
+ 870                     ; 361  INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
+ 870                     ; 362  {
+ 871                     	switch	.text
+ 872  00fc               f_TIM3_UPD_OVF_BRK_IRQHandler:
+ 876                     ; 366  }
+ 879  00fc 80            	iret
+ 902                     ; 373  INTERRUPT_HANDLER(TIM3_CAP_COM_IRQHandler, 16)
+ 902                     ; 374  {
+ 903                     	switch	.text
+ 904  00fd               f_TIM3_CAP_COM_IRQHandler:
+ 908                     ; 378  }
+ 911  00fd 80            	iret
+ 933                     ; 439 INTERRUPT_HANDLER(I2C_IRQHandler, 19)
+ 933                     ; 440 {
+ 934                     	switch	.text
+ 935  00fe               f_I2C_IRQHandler:
+ 939                     ; 444 }
+ 942  00fe 80            	iret
+ 965                     ; 452  INTERRUPT_HANDLER(UART2_TX_IRQHandler, 20)
+ 965                     ; 453  {
+ 966                     	switch	.text
+ 967  00ff               f_UART2_TX_IRQHandler:
+ 971                     ; 457  }
+ 974  00ff 80            	iret
+ 997                     ; 464  INTERRUPT_HANDLER(UART2_RX_IRQHandler, 21)
+ 997                     ; 465  {
+ 998                     	switch	.text
+ 999  0100               f_UART2_RX_IRQHandler:
+1003                     ; 469  }
+1006  0100 80            	iret
+1028                     ; 518  INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
+1028                     ; 519  {
+1029                     	switch	.text
+1030  0101               f_ADC1_IRQHandler:
+1034                     ; 523  }
+1037  0101 80            	iret
+1060                     ; 544  INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
+1060                     ; 545  {
+1061                     	switch	.text
+1062  0102               f_TIM4_UPD_OVF_IRQHandler:
+1066                     ; 549  }
+1069  0102 80            	iret
+1092                     ; 557 INTERRUPT_HANDLER(EEPROM_EEC_IRQHandler, 24)
+1092                     ; 558 {
+1093                     	switch	.text
+1094  0103               f_EEPROM_EEC_IRQHandler:
+1098                     ; 562 }
+1101  0103 80            	iret
+1133                     	switch	.ubsct
+1134  0002               L5_toggleLED:
+1135  0002 00            	ds.b	1
+1136  0003               L3_currentTick:
+1137  0003 00000000      	ds.b	4
+1138                     	xdef	f_EEPROM_EEC_IRQHandler
+1139                     	xdef	f_TIM4_UPD_OVF_IRQHandler
+1140                     	xdef	f_ADC1_IRQHandler
+1141                     	xdef	f_UART2_TX_IRQHandler
+1142                     	xdef	f_UART2_RX_IRQHandler
+1143                     	xdef	f_I2C_IRQHandler
+1144                     	xdef	f_TIM3_CAP_COM_IRQHandler
+1145                     	xdef	f_TIM3_UPD_OVF_BRK_IRQHandler
+1146                     	xdef	f_TIM2_CAP_COM_IRQHandler
+1147                     	xdef	f_TIM2_UPD_OVF_BRK_IRQHandler
+1148                     	xdef	f_TIM1_UPD_OVF_TRG_BRK_IRQHandler
+1149                     	xdef	f_TIM1_CAP_COM_IRQHandler
+1150                     	xdef	f_SPI_IRQHandler
+1151                     	xdef	f_EXTI_PORTE_IRQHandler
+1152                     	xdef	f_EXTI_PORTD_IRQHandler
+1153                     	xdef	f_EXTI_PORTC_IRQHandler
+1154                     	xdef	f_EXTI_PORTB_IRQHandler
+1155                     	xdef	f_EXTI_PORTA_IRQHandler
+1156                     	xdef	f_CLK_IRQHandler
+1157                     	xdef	f_AWU_IRQHandler
+1158                     	xdef	f_TLI_IRQHandler
+1159                     	xdef	f_TRAP_IRQHandler
+1160                     	xdef	f_NonHandledInterrupt
+1161                     	xdef	_StopTogglingLED
+1162                     	xdef	_StartTogglingLED
+1163                     	xdef	_GetTick
+1164                     	xdef	_DelayMs
+1165                     	xref	_TIM2_ClearITPendingBit
+1166                     	xref	_TIM1_ClearITPendingBit
+1167                     	xref	_GPIO_ReadInputPin
+1168                     	xref	_GPIO_WriteReverse
+1169                     	xref	_GPIO_WriteLow
+1170                     	xref	_GPIO_WriteHigh
+1171                     	xref.b	c_x
+1172                     	xref.b	c_y
+1192                     	xref	c_lgadc
+1193                     	xref	c_lcmp
+1194                     	xref	c_lsub
+1195                     	xref	c_ltor
+1196                     	end

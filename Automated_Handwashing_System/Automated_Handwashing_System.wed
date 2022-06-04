@@ -330,10 +330,10 @@ BarID=59647
 MRUWidth=412
 Docking=True
 MRUDockID=59419
-MRUDockLeftPos=-1
-MRUDockTopPos=-1
-MRUDockRightPos=1365
-MRUDockBottomPos=28
+MRUDockLeftPos=8
+MRUDockTopPos=31
+MRUDockRightPos=1374
+MRUDockBottomPos=60
 MRUFloatStyle=8196
 MRUFloatXPos=-1
 MRUFloatYPos=0
@@ -758,10 +758,10 @@ XPos=1
 YPos=5
 Docking=True
 MRUDockID=0
-MRUDockLeftPos=1
-MRUDockTopPos=5
-MRUDockRightPos=1366
-MRUDockBottomPos=155
+MRUDockLeftPos=8
+MRUDockTopPos=31
+MRUDockRightPos=1373
+MRUDockBottomPos=181
 MRUFloatStyle=4
 MRUFloatXPos=-1
 MRUFloatYPos=0
@@ -1239,8 +1239,8 @@ ptn_Child1=MainFrame
 ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPACCAAAAAJMAAAAAANMFAAAAAIGDAAAAA
-Title=ST Visual Develop - Automated_Handwashing_System.stw - [main.c]
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPACCAAAAAJMAAAAAANMFAAAAAIGDAAAAA
+Title=ST Visual Develop - Automated_Handwashing_System.stw - [stm8s_it.c]
 
 [WorkState_v1_2.Frames.ChildFrames]
 ptn_Child1=Document-0
@@ -1256,8 +1256,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=main.c
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAABGDAAAAALABAAAAA
-IsActiveChildFrame=True
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAABGDAAAAALABAAAAA
+IsActiveChildFrame=False
 IsFrameVisible=True
 
 [WorkState_v1_2.Frames.ChildFrames.Document-1]
@@ -1267,8 +1267,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=stm8s_it.c
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAIIBAAAAANFBAAAAA
-IsActiveChildFrame=False
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAIIBAAAAANFBAAAAA
+IsActiveChildFrame=True
 IsFrameVisible=True
 
 [WorkState_v1_2.Frames.ChildFrames.Document-2]

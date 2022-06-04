@@ -23,6 +23,9 @@
 	* The STM8s microcontroller processes inputs from
 	* the proximity sensors and drives the fan and solenoid
 	* valves accordingly.
+	* The actuation of the valve for soap dispensation is 
+	* controlled using a timer in order to prevent wastage of
+	* soap.
 	
 	* @IDE ST Visual Develop.
 	* @Compiler STM8 Cosmic Compiler.
@@ -72,9 +75,9 @@ int main(void)
 	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
 	TIM1_ITConfig(TIM1_IT_UPDATE,ENABLE);
 	TIM1_Cmd(ENABLE);
-	//Timer 2 to periodically poll functions (1ms timebase)
-	//Clock = 16MHz, Prescaler = 128, Period = 124
-	TIM2_TimeBaseInit(128,124);
+	//Timer 2 to periodically poll functions (10ms timebase)
+	//Clock = 16MHz, Prescaler = 128, Period = 1249
+	TIM2_TimeBaseInit(128,1249);
 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
 	TIM2_Cmd(ENABLE);
 	
@@ -82,7 +85,6 @@ int main(void)
 	
 	while (1)
 	{
-		//Handle soap sensor, valve and timing
 		if(!soapFlowDisabled)
 		{
 			if(!GPIO_ReadInputPin(SOAP_SENSOR_PORT,SOAP_SENSOR))
@@ -90,20 +92,16 @@ int main(void)
 				GPIO_WriteHigh(SOAP_VALVE_PORT,SOAP_VALVE);
 				DelayMs(soapDispensationTime);
 				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
-				ToggleLED();
+				StartTogglingLED();
 				soapFlowDisabled = 1;
 				currentTick = GetTick();
-			}
-			else
-			{
-				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
 			}
 		}
 		else
 		{
 			if((GetTick() - currentTick) >= soapValveShutOffTime)
 			{
-				DisableLED();
+				StopTogglingLED();
 				soapFlowDisabled = 0;
 			}
 		}									 

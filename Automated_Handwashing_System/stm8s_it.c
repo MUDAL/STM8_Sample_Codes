@@ -54,12 +54,12 @@ uint32_t GetTick(void)
 	return currentTick;
 }
 
-void ToggleLED(void)
+void StartTogglingLED(void)
 {
 	toggleLED = 1;
 }
 
-void DisableLED(void)
+void StopTogglingLED(void)
 {
 	toggleLED = 0;
 }
@@ -325,7 +325,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 	if(toggleLED)
 	{//Toggle LED every second
 		static uint16_t ledCounter;
-		if((ledCounter % 1000) == 0)
+		if((ledCounter % 100) == 0)
 		{
 			GPIO_WriteReverse(LED_PORT,LED);
 		}

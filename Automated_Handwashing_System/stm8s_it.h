@@ -61,8 +61,8 @@
 /* Exported functions ------------------------------------------------------- */
 void DelayMs(uint32_t delay);
 uint32_t GetTick(void);
-void ToggleLED(void);
-void DisableLED(void);
+void StartTogglingLED(void);
+void StopTogglingLED(void);
 
 
 #ifdef _COSMIC_
