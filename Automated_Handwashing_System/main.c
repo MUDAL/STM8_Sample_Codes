@@ -45,7 +45,7 @@
 
 static void IndicatePowerOn(void)
 {
-	uint16_t i = 0;
+	uint8_t i = 0;
 	while(i < 3)
 	{
 		GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
