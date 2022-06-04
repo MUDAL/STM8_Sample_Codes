@@ -230,7 +230,7 @@
  796  00d1 cd0000        	call	c_smodx
  798  00d4 a30000        	cpw	x,#0
  799  00d7 2609          	jrne	L703
- 800                     ; 333 			GPIO_WriteReverse(LED_PORT,LED);
+ 800                     ; 333 			GPIO_WriteReverse(SOAP_LED_PORT,SOAP_LED);
  802  00d9 4b10          	push	#16
  803  00db ae5019        	ldw	x,#20505
  804  00de cd0000        	call	_GPIO_WriteReverse
@@ -240,7 +240,7 @@
  810  00e2 3c00          	inc	L552_ledCounter
  812  00e4 2009          	jra	L113
  813  00e6               L503:
- 814                     ; 339 		GPIO_WriteLow(LED_PORT,LED);
+ 814                     ; 339 		GPIO_WriteLow(SOAP_LED_PORT,SOAP_LED);
  816  00e6 4b10          	push	#16
  817  00e8 ae5019        	ldw	x,#20505
  818  00eb cd0000        	call	_GPIO_WriteLow

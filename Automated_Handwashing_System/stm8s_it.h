@@ -54,8 +54,11 @@
 #define WATER_VALVE_PORT		GPIOD
 #define WATER_VALVE   			GPIO_PIN_4
 
-#define LED_PORT						GPIOF
-#define LED									GPIO_PIN_4
+#define SOAP_LED_PORT				GPIOF
+#define SOAP_LED						GPIO_PIN_4
+
+#define POWER_LED_PORT			GPIOB
+#define POWER_LED						GPIO_PIN_5
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

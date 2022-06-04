@@ -330,13 +330,13 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 		static uint8_t ledCounter;
 		if((ledCounter % 100) == 0)
 		{
-			GPIO_WriteReverse(LED_PORT,LED);
+			GPIO_WriteReverse(SOAP_LED_PORT,SOAP_LED);
 		}
 		ledCounter++;
 	}
 	else
 	{
-		GPIO_WriteLow(LED_PORT,LED);
+		GPIO_WriteLow(SOAP_LED_PORT,SOAP_LED);
 	}
 	TIM2_ClearITPendingBit(TIM2_IT_UPDATE);
  }

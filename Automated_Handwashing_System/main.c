@@ -40,7 +40,21 @@
 //1. Soap valve = PD2
 //2. Fan = PD3
 //3. Water valve = PD4
-//4. LED = PF4
+//4. Soap LED = PF4
+//5. Power LED = PB5
+
+static void IndicatePowerOn(void)
+{
+	uint16_t i = 0;
+	while(i < 3)
+	{
+		GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
+		DelayMs(500);
+		GPIO_WriteLow(POWER_LED_PORT,POWER_LED);
+		DelayMs(500);
+		i++;
+	}	
+}
 
 int main(void)
 {
@@ -61,12 +75,13 @@ int main(void)
 	GPIO_Init(SOAP_VALVE_PORT,SOAP_VALVE,OUTPUT_INIT);
 	GPIO_Init(FAN_PORT,FAN,OUTPUT_INIT);
 	GPIO_Init(WATER_VALVE_PORT,WATER_VALVE,OUTPUT_INIT);
-	GPIO_Init(LED_PORT,LED,OUTPUT_INIT);
+	GPIO_Init(SOAP_LED_PORT,SOAP_LED,OUTPUT_INIT);
+	GPIO_Init(POWER_LED_PORT,POWER_LED,OUTPUT_INIT);
 	//Turn all actuators off
 	GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
 	GPIO_WriteLow(FAN_PORT,FAN);
 	GPIO_WriteLow(WATER_VALVE_PORT,WATER_VALVE);
-	GPIO_WriteLow(LED_PORT,LED);
+	GPIO_WriteLow(SOAP_LED_PORT,SOAP_LED);
 	//Initialize timers
 	//Timer 1 for creating delays (1ms timebase)
 	//Prescaler = 128, Timer period = 124
@@ -75,11 +90,13 @@ int main(void)
 	TIM1_Cmd(ENABLE);
 	//Timer 2 to periodically poll functions (10ms timebase)
 	//Prescaler = 128, Period = 1249
-	TIM2_TimeBaseInit(128,1249);
+	TIM2_TimeBaseInit(TIM2_PRESCALER_128,1249);
 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
 	TIM2_Cmd(ENABLE);
-	
+
 	enableInterrupts();
+	//Blink power LED to signify a power cycle
+	IndicatePowerOn();
 	
 	while (1)
 	{
