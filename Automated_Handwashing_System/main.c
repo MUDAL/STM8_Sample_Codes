@@ -53,6 +53,8 @@ int main(void)
 	uint32_t currentTick = 0;
 	
 	disableInterrupts();
+	//Clock configuration, 16MHz
+	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 	//Initialize sensors
 	GPIO_Init(SOAP_SENSOR_PORT,SOAP_SENSOR,SENSOR_INIT);
 	GPIO_Init(FAN_SENSOR_PORT,FAN_SENSOR,SENSOR_INIT);
@@ -67,16 +69,14 @@ int main(void)
 	GPIO_WriteLow(FAN_PORT,FAN);
 	GPIO_WriteLow(WATER_VALVE_PORT,WATER_VALVE);
 	GPIO_WriteLow(LED_PORT,LED);
-	
 	//Initialize timers
 	//Timer 1 for creating delays (1ms timebase)
-	//Clock = 16MHz, Prescaler = 128, Timer period = 124
-	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);				 
+	//Prescaler = 128, Timer period = 124
 	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
 	TIM1_ITConfig(TIM1_IT_UPDATE,ENABLE);
 	TIM1_Cmd(ENABLE);
 	//Timer 2 to periodically poll functions (10ms timebase)
-	//Clock = 16MHz, Prescaler = 128, Period = 1249
+	//Prescaler = 128, Period = 1249
 	TIM2_TimeBaseInit(128,1249);
 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
 	TIM2_Cmd(ENABLE);

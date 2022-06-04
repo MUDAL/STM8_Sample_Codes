@@ -26,71 +26,71 @@
  130  0020 1f09          	ldw	(OFST-4,sp),x
  132                     ; 55 	disableInterrupts();
  135  0022 9b            sim
- 137                     ; 57 	GPIO_Init(SOAP_SENSOR_PORT,SOAP_SENSOR,SENSOR_INIT);
- 140  0023 4b40          	push	#64
- 141  0025 4b01          	push	#1
- 142  0027 ae5005        	ldw	x,#20485
- 143  002a cd0000        	call	_GPIO_Init
- 145  002d 85            	popw	x
- 146                     ; 58 	GPIO_Init(FAN_SENSOR_PORT,FAN_SENSOR,SENSOR_INIT);
- 148  002e 4b40          	push	#64
- 149  0030 4b02          	push	#2
- 150  0032 ae5005        	ldw	x,#20485
- 151  0035 cd0000        	call	_GPIO_Init
- 153  0038 85            	popw	x
- 154                     ; 59 	GPIO_Init(WATER_SENSOR_PORT,WATER_SENSOR,SENSOR_INIT);
- 156  0039 4b40          	push	#64
- 157  003b 4b04          	push	#4
- 158  003d ae5005        	ldw	x,#20485
- 159  0040 cd0000        	call	_GPIO_Init
- 161  0043 85            	popw	x
- 162                     ; 61 	GPIO_Init(SOAP_VALVE_PORT,SOAP_VALVE,OUTPUT_INIT);
- 164  0044 4ba0          	push	#160
- 165  0046 4b08          	push	#8
- 166  0048 ae5005        	ldw	x,#20485
- 167  004b cd0000        	call	_GPIO_Init
- 169  004e 85            	popw	x
- 170                     ; 62 	GPIO_Init(FAN_PORT,FAN,OUTPUT_INIT);
- 172  004f 4ba0          	push	#160
- 173  0051 4b10          	push	#16
- 174  0053 ae5005        	ldw	x,#20485
- 175  0056 cd0000        	call	_GPIO_Init
- 177  0059 85            	popw	x
- 178                     ; 63 	GPIO_Init(WATER_VALVE_PORT,WATER_VALVE,OUTPUT_INIT);
- 180  005a 4ba0          	push	#160
- 181  005c 4b20          	push	#32
- 182  005e ae5005        	ldw	x,#20485
- 183  0061 cd0000        	call	_GPIO_Init
- 185  0064 85            	popw	x
- 186                     ; 64 	GPIO_Init(LED_PORT,LED,OUTPUT_INIT);
- 188  0065 4ba0          	push	#160
- 189  0067 4b10          	push	#16
- 190  0069 ae5019        	ldw	x,#20505
- 191  006c cd0000        	call	_GPIO_Init
- 193  006f 85            	popw	x
- 194                     ; 66 	GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
- 196  0070 4b08          	push	#8
- 197  0072 ae5005        	ldw	x,#20485
- 198  0075 cd0000        	call	_GPIO_WriteLow
- 200  0078 84            	pop	a
- 201                     ; 67 	GPIO_WriteLow(FAN_PORT,FAN);
- 203  0079 4b10          	push	#16
- 204  007b ae5005        	ldw	x,#20485
- 205  007e cd0000        	call	_GPIO_WriteLow
- 207  0081 84            	pop	a
- 208                     ; 68 	GPIO_WriteLow(WATER_VALVE_PORT,WATER_VALVE);
- 210  0082 4b20          	push	#32
- 211  0084 ae5005        	ldw	x,#20485
- 212  0087 cd0000        	call	_GPIO_WriteLow
- 214  008a 84            	pop	a
- 215                     ; 69 	GPIO_WriteLow(LED_PORT,LED);
- 217  008b 4b10          	push	#16
- 218  008d ae5019        	ldw	x,#20505
- 219  0090 cd0000        	call	_GPIO_WriteLow
- 221  0093 84            	pop	a
- 222                     ; 74 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);				 
- 224  0094 4f            	clr	a
- 225  0095 cd0000        	call	_CLK_HSIPrescalerConfig
+ 137                     ; 57 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+ 140  0023 4f            	clr	a
+ 141  0024 cd0000        	call	_CLK_HSIPrescalerConfig
+ 143                     ; 59 	GPIO_Init(SOAP_SENSOR_PORT,SOAP_SENSOR,SENSOR_INIT);
+ 145  0027 4b40          	push	#64
+ 146  0029 4b01          	push	#1
+ 147  002b ae5005        	ldw	x,#20485
+ 148  002e cd0000        	call	_GPIO_Init
+ 150  0031 85            	popw	x
+ 151                     ; 60 	GPIO_Init(FAN_SENSOR_PORT,FAN_SENSOR,SENSOR_INIT);
+ 153  0032 4b40          	push	#64
+ 154  0034 4b02          	push	#2
+ 155  0036 ae5005        	ldw	x,#20485
+ 156  0039 cd0000        	call	_GPIO_Init
+ 158  003c 85            	popw	x
+ 159                     ; 61 	GPIO_Init(WATER_SENSOR_PORT,WATER_SENSOR,SENSOR_INIT);
+ 161  003d 4b40          	push	#64
+ 162  003f 4b04          	push	#4
+ 163  0041 ae5005        	ldw	x,#20485
+ 164  0044 cd0000        	call	_GPIO_Init
+ 166  0047 85            	popw	x
+ 167                     ; 63 	GPIO_Init(SOAP_VALVE_PORT,SOAP_VALVE,OUTPUT_INIT);
+ 169  0048 4ba0          	push	#160
+ 170  004a 4b08          	push	#8
+ 171  004c ae5005        	ldw	x,#20485
+ 172  004f cd0000        	call	_GPIO_Init
+ 174  0052 85            	popw	x
+ 175                     ; 64 	GPIO_Init(FAN_PORT,FAN,OUTPUT_INIT);
+ 177  0053 4ba0          	push	#160
+ 178  0055 4b10          	push	#16
+ 179  0057 ae5005        	ldw	x,#20485
+ 180  005a cd0000        	call	_GPIO_Init
+ 182  005d 85            	popw	x
+ 183                     ; 65 	GPIO_Init(WATER_VALVE_PORT,WATER_VALVE,OUTPUT_INIT);
+ 185  005e 4ba0          	push	#160
+ 186  0060 4b20          	push	#32
+ 187  0062 ae5005        	ldw	x,#20485
+ 188  0065 cd0000        	call	_GPIO_Init
+ 190  0068 85            	popw	x
+ 191                     ; 66 	GPIO_Init(LED_PORT,LED,OUTPUT_INIT);
+ 193  0069 4ba0          	push	#160
+ 194  006b 4b10          	push	#16
+ 195  006d ae5019        	ldw	x,#20505
+ 196  0070 cd0000        	call	_GPIO_Init
+ 198  0073 85            	popw	x
+ 199                     ; 68 	GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+ 201  0074 4b08          	push	#8
+ 202  0076 ae5005        	ldw	x,#20485
+ 203  0079 cd0000        	call	_GPIO_WriteLow
+ 205  007c 84            	pop	a
+ 206                     ; 69 	GPIO_WriteLow(FAN_PORT,FAN);
+ 208  007d 4b10          	push	#16
+ 209  007f ae5005        	ldw	x,#20485
+ 210  0082 cd0000        	call	_GPIO_WriteLow
+ 212  0085 84            	pop	a
+ 213                     ; 70 	GPIO_WriteLow(WATER_VALVE_PORT,WATER_VALVE);
+ 215  0086 4b20          	push	#32
+ 216  0088 ae5005        	ldw	x,#20485
+ 217  008b cd0000        	call	_GPIO_WriteLow
+ 219  008e 84            	pop	a
+ 220                     ; 71 	GPIO_WriteLow(LED_PORT,LED);
+ 222  008f 4b10          	push	#16
+ 223  0091 ae5019        	ldw	x,#20505
+ 224  0094 cd0000        	call	_GPIO_WriteLow
+ 226  0097 84            	pop	a
  227                     ; 75 	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
  229  0098 4b00          	push	#0
  230  009a ae007c        	ldw	x,#124
