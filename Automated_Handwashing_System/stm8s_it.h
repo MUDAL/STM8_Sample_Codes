@@ -59,8 +59,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-void DelayMs(uint32_t delay);
 uint32_t GetTick(void);
+void DelayMs(uint32_t delay);
 void StartTogglingLED(void);
 void StopTogglingLED(void);
 

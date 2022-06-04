@@ -176,8 +176,8 @@
  361                     	xdef	_main
  362                     	xref	_StopTogglingLED
  363                     	xref	_StartTogglingLED
- 364                     	xref	_GetTick
- 365                     	xref	_DelayMs
+ 364                     	xref	_DelayMs
+ 365                     	xref	_GetTick
  366                     	xref	_TIM2_ITConfig
  367                     	xref	_TIM2_Cmd
  368                     	xref	_TIM2_TimeBaseInit

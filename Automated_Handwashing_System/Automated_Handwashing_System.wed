@@ -1240,7 +1240,7 @@ ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
 WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPACCAAAAAJMAAAAAANMFAAAAAIGDAAAAA
-Title=ST Visual Develop - Automated_Handwashing_System.stw - [stm8s_it.c]
+Title=ST Visual Develop - Automated_Handwashing_System.stw - [main.c]
 
 [WorkState_v1_2.Frames.ChildFrames]
 ptn_Child1=Document-0
@@ -1256,8 +1256,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=main.c
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAABGDAAAAALABAAAAA
-IsActiveChildFrame=False
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPAAAAAAAAAAAAAAAABGDAAAAALABAAAAA
+IsActiveChildFrame=True
 IsFrameVisible=True
 
 [WorkState_v1_2.Frames.ChildFrames.Document-1]
@@ -1267,8 +1267,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=stm8s_it.c
 DocumentString=
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAIIBAAAAANFBAAAAA
-IsActiveChildFrame=True
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPOEAAAAAAOEAAAAAAIIBAAAAANFBAAAAA
+IsActiveChildFrame=False
 IsFrameVisible=True
 
 [WorkState_v1_2.Frames.ChildFrames.Document-2]

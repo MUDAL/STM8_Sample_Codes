@@ -43,15 +43,22 @@ static volatile uint8_t toggleLED;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /* Public functions ----------------------------------------------------------*/
-void DelayMs(uint32_t delay)
-{
-	uint32_t startTick = currentTick;
-	while((currentTick - startTick) < delay){}
-}
-
 uint32_t GetTick(void)
 {
-	return currentTick;
+	uint32_t tick;
+	disableInterrupts();
+	tick = currentTick; //critical section
+	enableInterrupts();
+	return tick;
+}
+
+void DelayMs(uint32_t delay)
+{
+	uint32_t startTick;
+	disableInterrupts();
+	startTick = currentTick; //critical section
+	enableInterrupts();
+	while((GetTick() - startTick) < delay){}
 }
 
 void StartTogglingLED(void)
@@ -251,7 +258,9 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-	currentTick++;
+	disableInterrupts();
+	currentTick++; //critical section
+	enableInterrupts();
 	TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 }
 
@@ -324,7 +333,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 
 	if(toggleLED)
 	{//Toggle LED every second
-		static uint16_t ledCounter;
+		static uint8_t ledCounter;
 		if((ledCounter % 100) == 0)
 		{
 			GPIO_WriteReverse(LED_PORT,LED);
