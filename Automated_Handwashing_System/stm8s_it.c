@@ -46,18 +46,14 @@ static volatile uint8_t toggleLED;
 uint32_t GetTick(void)
 {
 	uint32_t tick;
-	disableInterrupts();
-	tick = currentTick; //critical section
-	enableInterrupts();
+	tick = currentTick;
 	return tick;
 }
 
 void DelayMs(uint32_t delay)
 {
 	uint32_t startTick;
-	disableInterrupts();
-	startTick = currentTick; //critical section
-	enableInterrupts();
+	startTick = currentTick; 
 	while((GetTick() - startTick) < delay){}
 }
 
@@ -258,9 +254,7 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-	disableInterrupts();
-	currentTick++; //critical section
-	enableInterrupts();
+	currentTick++; 
 	TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 }
 

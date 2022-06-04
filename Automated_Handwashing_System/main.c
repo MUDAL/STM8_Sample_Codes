@@ -31,18 +31,16 @@
 	* @Compiler STM8 Cosmic Compiler.
 */
 
-//Pinouts
-//Sensors
-//1. soap = PB0
-//2. fan = PB1
-//3. water = PB2
+//Sensor pinout
+//1. Soap sensor = PB0
+//2. Fan sensor = PB1
+//3. Water sensor = PB2
 
-//Actuators
-//1. soap = PB3
-//2. fan = PB4
-//3. water = PB5
+//Actuator pinout
+//1. Soap valve = PD2
+//2. Fan = PD3
+//3. Water valve = PD4
 //4. LED = PF4
-
 
 int main(void)
 {

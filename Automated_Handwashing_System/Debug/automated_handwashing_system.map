@@ -1,5 +1,5 @@
 
-Map of Debug\automated_handwashing_system.sm8 from link file Debug\automated_handwashing_system.lkf - Sat Jun  4 10:30:36 2022
+Map of Debug\automated_handwashing_system.sm8 from link file Debug\automated_handwashing_system.lkf - Sat Jun  4 18:43:20 2022
 
 
                                --------
@@ -7,7 +7,7 @@ Map of Debug\automated_handwashing_system.sm8 from link file Debug\automated_han
                                --------
 
 start 00008080 end 0000808c length    12 segment .const
-start 0000808f end 000096af length  5664 segment .text
+start 0000808f end 000096a9 length  5658 segment .text
 start 00004000 end 00004000 length     0 segment .eeprom
 start 00000000 end 00000000 length     0 segment .bsct
 start 00000000 end 00000010 length    16 segment .ubsct
@@ -133,7 +133,7 @@ start 00012616 end 0001285c length   582 section .debug
 start 000007d4 end 00000841 length   109 section .info.
 
 Debug\stm8s_it.o:
-start 000093e1 end 000094f1 length   272 section .text
+start 000093e1 end 000094eb length   266 section .text
 start 00000000 end 00000006 length     6 section .ubsct
 start 0001285c end 000130db length  2175 section .debug
 start 00000841 end 000008ac length   107 section .info.
@@ -151,11 +151,11 @@ start ******** end ******** length     0 section .text *** removed ***
 start 0000090b end 0000093a length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o:
-start 000094f1 end 00009511 length    32 section .text
+start 000094eb end 0000950b length    32 section .text
 start 0000093a end 00000969 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o:
-start 00009511 end 00009521 length    16 section .text
+start 0000950b end 0000951b length    16 section .text
 start 00000969 end 00000999 length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadd.o:
@@ -175,35 +175,35 @@ start 00000006 end 0000000a length     4 section .ubsct
 start 00000a27 end 00000a56 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o:
-start 00009521 end 00009539 length    24 section .text
+start 0000951b end 00009533 length    24 section .text
 start 00000a56 end 00000a85 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o:
-start 00009539 end 0000954b length    18 section .text
+start 00009533 end 00009545 length    18 section .text
 start 00000a85 end 00000ab4 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o:
-start 0000954b end 0000955f length    20 section .text
+start 00009545 end 00009559 length    20 section .text
 start 00000ab4 end 00000ae4 length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o:
-start 0000955f end 0000964a length   235 section .text
+start 00009559 end 00009644 length   235 section .text
 start 00000ae4 end 00000b13 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o:
-start 0000964a end 0000965d length    19 section .text
+start 00009644 end 00009657 length    19 section .text
 start 00000b13 end 00000b43 length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o:
-start 0000965d end 00009672 length    21 section .text
+start 00009657 end 0000966c length    21 section .text
 start 00000b43 end 00000b72 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o:
-start 00009672 end 00009684 length    18 section .text
+start 0000966c end 0000967e length    18 section .text
 start 00000b72 end 00000ba1 length    47 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)sdivx.o:
-start 00009684 end 000096af length    43 section .text
+start 0000967e end 000096a9 length    43 section .text
 start 00000ba1 end 00000bd1 length    48 section .info.
 
 (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)smul.o:
@@ -912,7 +912,7 @@ _CLK_SWIMConfig                     00008452   defined in Debug\stm8s_clk.o sect
 _CLK_SYSCLKConfig                   00008425   defined in Debug\stm8s_clk.o section .text
 _CLK_SYSCLKEmergencyClear           000084ea   defined in Debug\stm8s_clk.o section .text
 _CLK_SlowActiveHaltWakeUpCmd        0000828f   defined in Debug\stm8s_clk.o section .text
-_DelayMs                            000093f7   defined in Debug\stm8s_it.o section .text
+_DelayMs                            000093f5   defined in Debug\stm8s_it.o section .text
                                                used in Debug\main.o
 _EXTI_DeInit                        ********   *** removed from Debug\stm8s_exti.o ***
 _EXTI_GetExtIntSensitivity          ********   *** removed from Debug\stm8s_exti.o ***
@@ -1009,9 +1009,9 @@ _SPI_ReceiveData                    ********   *** removed from Debug\stm8s_spi.
 _SPI_ResetCRC                       ********   *** removed from Debug\stm8s_spi.o ***
 _SPI_SendData                       ********   *** removed from Debug\stm8s_spi.o ***
 _SPI_TransmitCRC                    ********   *** removed from Debug\stm8s_spi.o ***
-_StartTogglingLED                   00009418   defined in Debug\stm8s_it.o section .text
+_StartTogglingLED                   00009414   defined in Debug\stm8s_it.o section .text
                                                used in Debug\main.o
-_StopTogglingLED                    0000941d   defined in Debug\stm8s_it.o section .text
+_StopTogglingLED                    00009419   defined in Debug\stm8s_it.o section .text
                                                used in Debug\main.o
 _TBR_Array                          ********   *** removed from Debug\stm8s_awu.o ***
 _TIM1_ARRPreloadConfig              00008adc   defined in Debug\stm8s_tim1.o section .text
@@ -1242,25 +1242,25 @@ _exit                               000080dd   defined in C:\Program Files (x86)
 _main                               000080df   defined in Debug\main.o section .text
                                                used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
 c_cmulx                             ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)cmulx.o ***
-c_divsl                             0000955f   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+c_divsl                             00009559   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
                                                *** not used ***
-c_divul                             00009576   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
+c_divul                             00009570   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o
 c_imul                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)imul.o ***
 c_ladd                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ladd.o ***
-c_lcmp                              000094f1   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o section .text
+c_lcmp                              000094eb   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lcmp.o section .text
                                                used in Debug\main.o
                                                        Debug\stm8s_i2c.o
                                                        Debug\stm8s_it.o
-c_lgadc                             00009511   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o section .text
+c_lgadc                             0000950b   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadc.o section .text
                                                used in Debug\stm8s_it.o
 c_lgadd                             ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgadd.o ***
-c_lgneg                             0000964a   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o section .text
+c_lgneg                             00009644   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lgneg.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o
 c_llsh                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)llsh.o ***
 c_lmul                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o ***
 c_lmulc                             ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lmul.o ***
-c_lneg                              0000965d   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o section .text
+c_lneg                              00009657   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lneg.o section .text
                                                used in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ldiv.o
 c_lreg                              00000006   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lreg.o section .ubsct
                                                used in Debug\stm8s_awu.o
@@ -1282,11 +1282,11 @@ c_lreg                              00000006   defined in (C:\Program Files (x86
                                                        (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o
                                                        (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)smul.o
                                                        (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o
-c_lsub                              00009521   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o section .text
+c_lsub                              0000951b   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)lsub.o section .text
                                                used in Debug\main.o
                                                        Debug\stm8s_uart2.o
                                                        Debug\stm8s_it.o
-c_ltor                              00009539   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o section .text
+c_ltor                              00009533   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ltor.o section .text
                                                used in Debug\stm8s_awu.o
                                                        Debug\stm8s_beep.o
                                                        Debug\stm8s_clk.o
@@ -1294,21 +1294,21 @@ c_ltor                              00009539   defined in (C:\Program Files (x86
                                                        Debug\stm8s_i2c.o
                                                        Debug\stm8s_uart2.o
                                                        Debug\stm8s_it.o
-c_ludv                              0000954b   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o section .text
+c_ludv                              00009545   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)ludiv.o section .text
                                                used in Debug\stm8s_awu.o
                                                        Debug\stm8s_beep.o
                                                        Debug\stm8s_clk.o
                                                        Debug\stm8s_i2c.o
                                                        Debug\stm8s_uart2.o
-c_rtol                              00009672   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o section .text
+c_rtol                              0000966c   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)rtol.o section .text
                                                used in Debug\main.o
                                                        Debug\stm8s_clk.o
                                                        Debug\stm8s_flash.o
                                                        Debug\stm8s_i2c.o
                                                        Debug\stm8s_uart2.o
-c_sdivx                             0000968a   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)sdivx.o section .text
+c_sdivx                             00009684   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)sdivx.o section .text
                                                used in Debug\stm8s_i2c.o
-c_smodx                             00009684   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)sdivx.o section .text
+c_smodx                             0000967e   defined in (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)sdivx.o section .text
                                                used in Debug\stm8s_it.o
 c_smul                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)smul.o ***
 c_umul                              ********   *** removed from (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o ***
@@ -1326,49 +1326,49 @@ c_y                                 0000000d   defined in (C:\Program Files (x86
                                                used in C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\crtsi0.sm8
                                                        Debug\stm8s_it.o
                                                        (C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\Lib\libm0.sm8)umul.o
-f_ADC1_IRQHandler                   000094ee   defined in Debug\stm8s_it.o section .text
+f_ADC1_IRQHandler                   000094e8   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_AWU_IRQHandler                    00009423   defined in Debug\stm8s_it.o section .text
+f_AWU_IRQHandler                    0000941f   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_CLK_IRQHandler                    00009424   defined in Debug\stm8s_it.o section .text
+f_CLK_IRQHandler                    00009420   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EEPROM_EEC_IRQHandler             000094f0   defined in Debug\stm8s_it.o section .text
+f_EEPROM_EEC_IRQHandler             000094ea   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTA_IRQHandler             00009425   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTA_IRQHandler             00009421   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTB_IRQHandler             00009426   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTB_IRQHandler             00009422   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTC_IRQHandler             00009427   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTC_IRQHandler             00009423   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTD_IRQHandler             00009428   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTD_IRQHandler             00009424   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_EXTI_PORTE_IRQHandler             00009429   defined in Debug\stm8s_it.o section .text
+f_EXTI_PORTE_IRQHandler             00009425   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_I2C_IRQHandler                    000094eb   defined in Debug\stm8s_it.o section .text
+f_I2C_IRQHandler                    000094e5   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_NonHandledInterrupt               00009420   defined in Debug\stm8s_it.o section .text
+f_NonHandledInterrupt               0000941c   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_SPI_IRQHandler                    0000942a   defined in Debug\stm8s_it.o section .text
+f_SPI_IRQHandler                    00009426   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM1_CAP_COM_IRQHandler           00009459   defined in Debug\stm8s_it.o section .text
+f_TIM1_CAP_COM_IRQHandler           00009453   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM1_UPD_OVF_TRG_BRK_IRQHandler   0000942b   defined in Debug\stm8s_it.o section .text
+f_TIM1_UPD_OVF_TRG_BRK_IRQHandler   00009427   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM2_CAP_COM_IRQHandler           000094e8   defined in Debug\stm8s_it.o section .text
+f_TIM2_CAP_COM_IRQHandler           000094e2   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM2_UPD_OVF_BRK_IRQHandler       0000945a   defined in Debug\stm8s_it.o section .text
+f_TIM2_UPD_OVF_BRK_IRQHandler       00009454   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM3_CAP_COM_IRQHandler           000094ea   defined in Debug\stm8s_it.o section .text
+f_TIM3_CAP_COM_IRQHandler           000094e4   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM3_UPD_OVF_BRK_IRQHandler       000094e9   defined in Debug\stm8s_it.o section .text
+f_TIM3_UPD_OVF_BRK_IRQHandler       000094e3   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TIM4_UPD_OVF_IRQHandler           000094ef   defined in Debug\stm8s_it.o section .text
+f_TIM4_UPD_OVF_IRQHandler           000094e9   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TLI_IRQHandler                    00009422   defined in Debug\stm8s_it.o section .text
+f_TLI_IRQHandler                    0000941e   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_TRAP_IRQHandler                   00009421   defined in Debug\stm8s_it.o section .text
+f_TRAP_IRQHandler                   0000941d   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_UART2_RX_IRQHandler               000094ed   defined in Debug\stm8s_it.o section .text
+f_UART2_RX_IRQHandler               000094e7   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o
-f_UART2_TX_IRQHandler               000094ec   defined in Debug\stm8s_it.o section .text
+f_UART2_TX_IRQHandler               000094e6   defined in Debug\stm8s_it.o section .text
                                                used in Debug\stm8_interrupt_vector.o

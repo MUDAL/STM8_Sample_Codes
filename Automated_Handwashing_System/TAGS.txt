@@ -90,7 +90,7 @@ ADC1_GetITStatus	inc\stm8s_adc1.h	329;"	prototype	signature:(ADC1_IT_TypeDef ITP
 ADC1_GetITStatus	src\stm8s_adc1.c	616;"	function	signature:(ADC1_IT_TypeDef ITPendingBit)
 ADC1_HTRH_RESET_VALUE	inc\stm8s.h	350;"	macro
 ADC1_HTRL_RESET_VALUE	inc\stm8s.h	349;"	macro
-ADC1_IRQHandler	stm8s_it.h	139;"	prototype	signature:(void)
+ADC1_IRQHandler	stm8s_it.h	137;"	prototype	signature:(void)
 ADC1_ITConfig	inc\stm8s_adc1.h	312;"	prototype	signature:(ADC1_IT_TypeDef ADC1_IT, FunctionalState NewState)
 ADC1_ITConfig	src\stm8s_adc1.c	190;"	function	signature:(ADC1_IT_TypeDef ADC1_IT, FunctionalState NewState)
 ADC1_IT_AWD	inc\stm8s_adc1.h	81;"	enumerator	enum:__anon17
@@ -165,7 +165,7 @@ ADC2_CSR_CH	inc\stm8s.h	420;"	macro
 ADC2_CSR_EOC	inc\stm8s.h	418;"	macro
 ADC2_CSR_EOCIE	inc\stm8s.h	419;"	macro
 ADC2_CSR_RESET_VALUE	inc\stm8s.h	406;"	macro
-ADC2_IRQHandler	stm8s_it.h	137;"	prototype	signature:(void)
+ADC2_IRQHandler	stm8s_it.h	135;"	prototype	signature:(void)
 ADC2_TDRH_RESET_VALUE	inc\stm8s.h	410;"	macro
 ADC2_TDRL_RESET_VALUE	inc\stm8s.h	409;"	macro
 ADC2_TypeDef	inc\stm8s.h	401;"	typedef	typeref:struct:ADC2_struct
@@ -201,7 +201,7 @@ AWU_DeInit	inc\stm8s_awu.h	133;"	prototype	signature:(void)
 AWU_DeInit	src\stm8s_awu.c	73;"	function	signature:(void)
 AWU_GetFlagStatus	inc\stm8s_awu.h	138;"	prototype	signature:(void)
 AWU_GetFlagStatus	src\stm8s_awu.c	183;"	function	signature:(void)
-AWU_IRQHandler	stm8s_it.h	78;"	prototype	signature:(void)
+AWU_IRQHandler	stm8s_it.h	76;"	prototype	signature:(void)
 AWU_IdleModeEnable	inc\stm8s_awu.h	137;"	prototype	signature:(void)
 AWU_IdleModeEnable	src\stm8s_awu.c	168;"	function	signature:(void)
 AWU_Init	inc\stm8s_awu.h	134;"	prototype	signature:(AWU_Timebase_TypeDef AWU_TimeBase)
@@ -383,7 +383,7 @@ CAN_RFR_FOVR	inc\stm8s.h	2371;"	macro
 CAN_RFR_FULL	inc\stm8s.h	2370;"	macro
 CAN_RFR_RESET_VALUE	inc\stm8s.h	2495;"	macro
 CAN_RFR_RFOM	inc\stm8s.h	2372;"	macro
-CAN_RX_IRQHandler	stm8s_it.h	91;"	prototype	signature:(void)
+CAN_RX_IRQHandler	stm8s_it.h	89;"	prototype	signature:(void)
 CAN_TECR_RESET_VALUE	inc\stm8s.h	2502;"	macro
 CAN_TECR_TEC0	inc\stm8s.h	2429;"	macro
 CAN_TECR_TEC1	inc\stm8s.h	2430;"	macro
@@ -409,7 +409,7 @@ CAN_TSR_RQCP2	inc\stm8s.h	2355;"	macro
 CAN_TSR_TXOK0	inc\stm8s.h	2357;"	macro
 CAN_TSR_TXOK1	inc\stm8s.h	2358;"	macro
 CAN_TSR_TXOK2	inc\stm8s.h	2359;"	macro
-CAN_TX_IRQHandler	stm8s_it.h	92;"	prototype	signature:(void)
+CAN_TX_IRQHandler	stm8s_it.h	90;"	prototype	signature:(void)
 CAN_TypeDef	inc\stm8s.h	2328;"	typedef	typeref:struct:__anon5
 CCER1	inc\stm8s.h	1133;"	member	struct:TIM5_struct
 CCER1	inc\stm8s.h	626;"	member	struct:TIM1_struct
@@ -554,7 +554,7 @@ CLK_ICKR_LSIEN	inc\stm8s.h	553;"	macro
 CLK_ICKR_LSIRDY	inc\stm8s.h	552;"	macro
 CLK_ICKR_RESET_VALUE	inc\stm8s.h	531;"	macro
 CLK_ICKR_SWUAH	inc\stm8s.h	551;"	macro
-CLK_IRQHandler	stm8s_it.h	79;"	prototype	signature:(void)
+CLK_IRQHandler	stm8s_it.h	77;"	prototype	signature:(void)
 CLK_ITConfig	inc\stm8s_clk.h	364;"	prototype	signature:(CLK_IT_TypeDef CLK_IT, FunctionalState NewState)
 CLK_ITConfig	src\stm8s_clk.c	459;"	function	signature:(CLK_IT_TypeDef CLK_IT, FunctionalState NewState)
 CLK_IT_CSSD	inc\stm8s_clk.h	167;"	enumerator	enum:__anon32
@@ -761,15 +761,13 @@ DRL	inc\stm8s.h	326;"	member	struct:ADC1_struct
 DRL	inc\stm8s.h	397;"	member	struct:ADC2_struct
 DTR	inc\stm8s.h	644;"	member	struct:TIM1_struct
 DUKR	inc\stm8s.h	1526;"	member	struct:FLASH_struct
-DelayMs	stm8s_it.c	46;"	function	signature:(uint32_t delay)
-DelayMs	stm8s_it.h	62;"	prototype	signature:(uint32_t delay)
-DisableLED	stm8s_it.c	85;"	function	signature:(void)
-DisableLED	stm8s_it.h	67;"	prototype	signature:(void)
+DelayMs	stm8s_it.c	53;"	function	signature:(uint32_t delay)
+DelayMs	stm8s_it.h	63;"	prototype	signature:(uint32_t delay)
 ECKR	inc\stm8s.h	511;"	member	struct:CLK_struct
 EEPROM	inc\stm8s.h	125;"	macro
 EEPROM	inc\stm8s.h	131;"	macro
 EEPROM	inc\stm8s.h	145;"	macro
-EEPROM_EEC_IRQHandler	stm8s_it.h	147;"	prototype	signature:(void)
+EEPROM_EEC_IRQHandler	stm8s_it.h	145;"	prototype	signature:(void)
 EGR	inc\stm8s.h	1067;"	member	struct:TIM4_struct
 EGR	inc\stm8s.h	1129;"	member	struct:TIM5_struct
 EGR	inc\stm8s.h	1267;"	member	struct:TIM6_struct
@@ -797,12 +795,12 @@ EXTI_GetExtIntSensitivity	inc\stm8s_exti.h	124;"	prototype	signature:(EXTI_Port_
 EXTI_GetExtIntSensitivity	src\stm8s_exti.c	126;"	function	signature:(EXTI_Port_TypeDef Port)
 EXTI_GetTLISensitivity	inc\stm8s_exti.h	125;"	prototype	signature:(void)
 EXTI_GetTLISensitivity	src\stm8s_exti.c	162;"	function	signature:(void)
-EXTI_PORTA_IRQHandler	stm8s_it.h	80;"	prototype	signature:(void)
-EXTI_PORTB_IRQHandler	stm8s_it.h	81;"	prototype	signature:(void)
-EXTI_PORTC_IRQHandler	stm8s_it.h	82;"	prototype	signature:(void)
-EXTI_PORTD_IRQHandler	stm8s_it.h	83;"	prototype	signature:(void)
-EXTI_PORTE_IRQHandler	stm8s_it.h	84;"	prototype	signature:(void)
-EXTI_PORTF_IRQHandler	stm8s_it.h	87;"	prototype	signature:(void)
+EXTI_PORTA_IRQHandler	stm8s_it.h	78;"	prototype	signature:(void)
+EXTI_PORTB_IRQHandler	stm8s_it.h	79;"	prototype	signature:(void)
+EXTI_PORTC_IRQHandler	stm8s_it.h	80;"	prototype	signature:(void)
+EXTI_PORTD_IRQHandler	stm8s_it.h	81;"	prototype	signature:(void)
+EXTI_PORTE_IRQHandler	stm8s_it.h	82;"	prototype	signature:(void)
+EXTI_PORTF_IRQHandler	stm8s_it.h	85;"	prototype	signature:(void)
 EXTI_PORT_GPIOA	inc\stm8s_exti.h	63;"	enumerator	enum:__anon37
 EXTI_PORT_GPIOB	inc\stm8s_exti.h	64;"	enumerator	enum:__anon37
 EXTI_PORT_GPIOC	inc\stm8s_exti.h	65;"	enumerator	enum:__anon37
@@ -1099,8 +1097,8 @@ GPIO_struct	inc\stm8s.h	265;"	struct
 GTR	inc\stm8s.h	1778;"	member	struct:UART1_struct
 GTR	inc\stm8s.h	1877;"	member	struct:UART2_struct
 GTR	inc\stm8s.h	2076;"	member	struct:UART4_struct
-GetTick	stm8s_it.c	52;"	function	signature:(void)
-GetTick	stm8s_it.h	63;"	prototype	signature:(void)
+GetTick	stm8s_it.c	46;"	function	signature:(void)
+GetTick	stm8s_it.h	62;"	prototype	signature:(void)
 HSE_VALUE	inc\stm8s.h	109;"	macro
 HSE_VALUE	inc\stm8s.h	111;"	macro
 HSIDivFactor	src\stm8s_clk.c	48;"	variable
@@ -1202,7 +1200,7 @@ I2C_GetITStatus	inc\stm8s_i2c.h	621;"	prototype	signature:(I2C_ITPendingBit_Type
 I2C_GetITStatus	src\stm8s_i2c.c	791;"	function	signature:(I2C_ITPendingBit_TypeDef I2C_ITPendingBit)
 I2C_GetLastEvent	inc\stm8s_i2c.h	609;"	prototype	signature:(void)
 I2C_GetLastEvent	src\stm8s_i2c.c	628;"	function	signature:(void)
-I2C_IRQHandler	stm8s_it.h	124;"	prototype	signature:(void)
+I2C_IRQHandler	stm8s_it.h	122;"	prototype	signature:(void)
 I2C_ITConfig	inc\stm8s_i2c.h	517;"	prototype	signature:(I2C_IT_TypeDef I2C_IT, FunctionalState NewState)
 I2C_ITConfig	src\stm8s_i2c.c	381;"	function	signature:(I2C_IT_TypeDef I2C_IT, FunctionalState NewState)
 I2C_ITPENDINGBIT_ACKNOWLEDGEFAILURE	inc\stm8s_i2c.h	149;"	enumerator	enum:__anon52
@@ -1291,7 +1289,7 @@ INTERRUPT_HANDLER	inc\stm8s.h	2760;"	macro
 INTERRUPT_HANDLER_TRAP	inc\stm8s.h	2749;"	macro
 INTERRUPT_HANDLER_TRAP	inc\stm8s.h	2754;"	macro
 INTERRUPT_HANDLER_TRAP	inc\stm8s.h	2763;"	macro
-INTERRUPT_HANDLER_TRAP	stm8s_it.c	111;"	function
+INTERRUPT_HANDLER_TRAP	stm8s_it.c	91;"	function
 IN_RAM	inc\stm8s.h	171;"	macro
 IN_RAM	inc\stm8s.h	173;"	macro
 IN_RAM	inc\stm8s.h	175;"	macro
@@ -1638,7 +1636,7 @@ NOPT3	inc\stm8s.h	1592;"	member	struct:OPT_struct
 NOPT4	inc\stm8s.h	1594;"	member	struct:OPT_struct
 NOPT5	inc\stm8s.h	1596;"	member	struct:OPT_struct
 NOPT7	inc\stm8s.h	1600;"	member	struct:OPT_struct
-NonHandledInterrupt	stm8s_it.h	72;"	prototype	signature:(void)
+NonHandledInterrupt	stm8s_it.h	70;"	prototype	signature:(void)
 OARH	inc\stm8s.h	1334;"	member	struct:I2C_struct
 OARL	inc\stm8s.h	1333;"	member	struct:I2C_struct
 ODR	inc\stm8s.h	267;"	member	struct:GPIO_struct
@@ -1720,7 +1718,6 @@ RST_SR_WWDGF	inc\stm8s.h	1685;"	macro
 RST_TypeDef	inc\stm8s.h	1675;"	typedef	typeref:struct:RST_struct
 RST_struct	inc\stm8s.h	1671;"	struct
 RXCRCR	inc\stm8s.h	1704;"	member	struct:SPI_struct
-ReadSensorDriveOutput	stm8s_it.c	65;"	function	signature:(GPIO_TypeDef* sensorPort, GPIO_Pin_TypeDef sensorPin, GPIO_TypeDef* actuatorPort, GPIO_Pin_TypeDef actuatorPin)
 Reserved1	inc\stm8s.h	2299;"	member	struct:__anon5::__anon6::__anon12
 Reserved2	inc\stm8s.h	2305;"	member	struct:__anon5::__anon6::__anon12
 RxFIFO	inc\stm8s.h	2326;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon13
@@ -1820,7 +1817,7 @@ SPI_ICR_RESET_VALUE	inc\stm8s.h	1715;"	macro
 SPI_ICR_RXEI	inc\stm8s.h	1746;"	macro
 SPI_ICR_TXEI	inc\stm8s.h	1745;"	macro
 SPI_ICR_WKIE	inc\stm8s.h	1748;"	macro
-SPI_IRQHandler	stm8s_it.h	95;"	prototype	signature:(void)
+SPI_IRQHandler	stm8s_it.h	93;"	prototype	signature:(void)
 SPI_ITConfig	inc\stm8s_spi.h	310;"	prototype	signature:(SPI_IT_TypeDef SPI_IT, FunctionalState NewState)
 SPI_ITConfig	src\stm8s_spi.c	141;"	function	signature:(SPI_IT_TypeDef SPI_IT, FunctionalState NewState)
 SPI_IT_CRCERR	inc\stm8s_spi.h	157;"	enumerator	enum:__anon69
@@ -1886,9 +1883,11 @@ SUCCESS	inc\stm8s.h	238;"	enumerator	enum:__anon4
 SWCR	inc\stm8s.h	515;"	member	struct:CLK_struct
 SWIMCCR	inc\stm8s.h	523;"	member	struct:CLK_struct
 SWR	inc\stm8s.h	514;"	member	struct:CLK_struct
-Sensor_FoundObstacle	stm8s_it.c	59;"	function	signature:(GPIO_TypeDef* port, GPIO_Pin_TypeDef pin)
-Sensor_FoundObstacle	stm8s_it.h	64;"	prototype	signature:(GPIO_TypeDef* port, GPIO_Pin_TypeDef pin)
 SetBit	inc\stm8s.h	2789;"	macro
+StartTogglingLED	stm8s_it.c	60;"	function	signature:(void)
+StartTogglingLED	stm8s_it.h	64;"	prototype	signature:(void)
+StopTogglingLED	stm8s_it.c	65;"	function	signature:(void)
+StopTogglingLED	stm8s_it.h	65;"	prototype	signature:(void)
 TBR	inc\stm8s.h	444;"	member	struct:AWU_struct
 TBR_Array	src\stm8s_awu.c	55;"	variable
 TDRH	inc\stm8s.h	327;"	member	struct:ADC1_struct
@@ -1941,7 +1940,7 @@ TIM1_BREAK_ENABLE	inc\stm8s_tim1.h	164;"	enumerator	enum:__anon78
 TIM1_BaseAddress	inc\stm8s.h	2580;"	macro
 TIM1_BreakPolarity_TypeDef	inc\stm8s_tim1.h	175;"	typedef	typeref:enum:__anon79
 TIM1_BreakState_TypeDef	inc\stm8s_tim1.h	166;"	typedef	typeref:enum:__anon78
-TIM1_CAP_COM_IRQHandler	stm8s_it.h	96;"	prototype	signature:(void)
+TIM1_CAP_COM_IRQHandler	stm8s_it.h	94;"	prototype	signature:(void)
 TIM1_CCER1_CC1E	inc\stm8s.h	764;"	macro
 TIM1_CCER1_CC1NE	inc\stm8s.h	762;"	macro
 TIM1_CCER1_CC1NP	inc\stm8s.h	761;"	macro
@@ -2333,7 +2332,7 @@ TIM1_TimeBaseInit	src\stm8s_tim1.c	111;"	function	signature:(uint16_t TIM1_Presc
 TIM1_TypeDef	inc\stm8s.h	647;"	typedef	typeref:struct:TIM1_struct
 TIM1_UPDATESOURCE_GLOBAL	inc\stm8s_tim1.h	400;"	enumerator	enum:__anon96
 TIM1_UPDATESOURCE_REGULAR	inc\stm8s_tim1.h	401;"	enumerator	enum:__anon96
-TIM1_UPD_OVF_TRG_BRK_IRQHandler	stm8s_it.h	97;"	prototype	signature:(void)
+TIM1_UPD_OVF_TRG_BRK_IRQHandler	stm8s_it.h	95;"	prototype	signature:(void)
 TIM1_UpdateDisableConfig	inc\stm8s_tim1.h	553;"	prototype	signature:(FunctionalState NewState)
 TIM1_UpdateDisableConfig	src\stm8s_tim1.c	803;"	function	signature:(FunctionalState NewState)
 TIM1_UpdateRequestConfig	inc\stm8s_tim1.h	554;"	prototype	signature:(TIM1_UpdateSource_TypeDef TIM1_UpdateSource)
@@ -2348,7 +2347,7 @@ TIM2_ARRL_RESET_VALUE	inc\stm8s.h	872;"	macro
 TIM2_ARRPreloadConfig	inc\stm8s_tim2.h	302;"	prototype	signature:(FunctionalState NewState)
 TIM2_ARRPreloadConfig	src\stm8s_tim2.c	561;"	function	signature:(FunctionalState NewState)
 TIM2_BaseAddress	inc\stm8s.h	2581;"	macro
-TIM2_CAP_COM_IRQHandler	stm8s_it.h	104;"	prototype	signature:(void)
+TIM2_CAP_COM_IRQHandler	stm8s_it.h	102;"	prototype	signature:(void)
 TIM2_CCER1_CC1E	inc\stm8s.h	922;"	macro
 TIM2_CCER1_CC1P	inc\stm8s.h	921;"	macro
 TIM2_CCER1_CC2E	inc\stm8s.h	920;"	macro
@@ -2566,7 +2565,7 @@ TIM2_TimeBaseInit	src\stm8s_tim2.c	89;"	function	signature:( TIM2_Prescaler_Type
 TIM2_TypeDef	inc\stm8s.h	852;"	typedef	typeref:struct:TIM2_struct
 TIM2_UPDATESOURCE_GLOBAL	inc\stm8s_tim2.h	244;"	enumerator	enum:__anon114
 TIM2_UPDATESOURCE_REGULAR	inc\stm8s_tim2.h	245;"	enumerator	enum:__anon114
-TIM2_UPD_OVF_BRK_IRQHandler	stm8s_it.h	103;"	prototype	signature:(void)
+TIM2_UPD_OVF_BRK_IRQHandler	stm8s_it.h	101;"	prototype	signature:(void)
 TIM2_UpdateDisableConfig	inc\stm8s_tim2.h	295;"	prototype	signature:(FunctionalState NewState)
 TIM2_UpdateDisableConfig	src\stm8s_tim2.c	392;"	function	signature:(FunctionalState NewState)
 TIM2_UpdateRequestConfig	inc\stm8s_tim2.h	296;"	prototype	signature:(TIM2_UpdateSource_TypeDef TIM2_UpdateSource)
@@ -2581,7 +2580,7 @@ TIM3_ARRL_RESET_VALUE	inc\stm8s.h	990;"	macro
 TIM3_ARRPreloadConfig	inc\stm8s_tim3.h	292;"	prototype	signature:(FunctionalState NewState)
 TIM3_ARRPreloadConfig	src\stm8s_tim3.c	483;"	function	signature:(FunctionalState NewState)
 TIM3_BaseAddress	inc\stm8s.h	2582;"	macro
-TIM3_CAP_COM_IRQHandler	stm8s_it.h	110;"	prototype	signature:(void)
+TIM3_CAP_COM_IRQHandler	stm8s_it.h	108;"	prototype	signature:(void)
 TIM3_CCER1_CC1E	inc\stm8s.h	1034;"	macro
 TIM3_CCER1_CC1P	inc\stm8s.h	1033;"	macro
 TIM3_CCER1_CC2E	inc\stm8s.h	1032;"	macro
@@ -2768,7 +2767,7 @@ TIM3_TimeBaseInit	src\stm8s_tim3.c	82;"	function	signature:( TIM3_Prescaler_Type
 TIM3_TypeDef	inc\stm8s.h	972;"	typedef	typeref:struct:TIM3_struct
 TIM3_UPDATESOURCE_GLOBAL	inc\stm8s_tim3.h	240;"	enumerator	enum:__anon129
 TIM3_UPDATESOURCE_REGULAR	inc\stm8s_tim3.h	241;"	enumerator	enum:__anon129
-TIM3_UPD_OVF_BRK_IRQHandler	stm8s_it.h	109;"	prototype	signature:(void)
+TIM3_UPD_OVF_BRK_IRQHandler	stm8s_it.h	107;"	prototype	signature:(void)
 TIM3_UpdateDisableConfig	inc\stm8s_tim3.h	286;"	prototype	signature:(FunctionalState NewState)
 TIM3_UpdateDisableConfig	src\stm8s_tim3.c	335;"	function	signature:(FunctionalState NewState)
 TIM3_UpdateRequestConfig	inc\stm8s_tim3.h	287;"	prototype	signature:(TIM3_UpdateSource_TypeDef TIM3_UpdateSource)
@@ -2851,7 +2850,7 @@ TIM4_TimeBaseInit	src\stm8s_tim4.c	65;"	function	signature:(TIM4_Prescaler_TypeD
 TIM4_TypeDef	inc\stm8s.h	1072;"	typedef	typeref:struct:TIM4_struct
 TIM4_UPDATESOURCE_GLOBAL	inc\stm8s_tim4.h	92;"	enumerator	enum:__anon134
 TIM4_UPDATESOURCE_REGULAR	inc\stm8s_tim4.h	93;"	enumerator	enum:__anon134
-TIM4_UPD_OVF_IRQHandler	stm8s_it.h	145;"	prototype	signature:(void)
+TIM4_UPD_OVF_IRQHandler	stm8s_it.h	143;"	prototype	signature:(void)
 TIM4_UpdateDisableConfig	inc\stm8s_tim4.h	142;"	prototype	signature:(FunctionalState NewState)
 TIM4_UpdateDisableConfig	src\stm8s_tim4.c	131;"	function	signature:(FunctionalState NewState)
 TIM4_UpdateRequestConfig	inc\stm8s_tim4.h	143;"	prototype	signature:(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
@@ -2864,7 +2863,7 @@ TIM5_ARRH_RESET_VALUE	inc\stm8s.h	1167;"	macro
 TIM5_ARRL_ARR	inc\stm8s.h	1239;"	macro
 TIM5_ARRL_RESET_VALUE	inc\stm8s.h	1168;"	macro
 TIM5_BaseAddress	inc\stm8s.h	2584;"	macro
-TIM5_CAP_COM_IRQHandler	stm8s_it.h	101;"	prototype	signature:(void)
+TIM5_CAP_COM_IRQHandler	stm8s_it.h	99;"	prototype	signature:(void)
 TIM5_CCER1_CC1E	inc\stm8s.h	1228;"	macro
 TIM5_CCER1_CC1P	inc\stm8s.h	1227;"	macro
 TIM5_CCER1_CC2E	inc\stm8s.h	1226;"	macro
@@ -2936,7 +2935,7 @@ TIM5_SR2_CC2OF	inc\stm8s.h	1210;"	macro
 TIM5_SR2_CC3OF	inc\stm8s.h	1209;"	macro
 TIM5_SR2_RESET_VALUE	inc\stm8s.h	1157;"	macro
 TIM5_TypeDef	inc\stm8s.h	1146;"	typedef	typeref:struct:TIM5_struct
-TIM5_UPD_OVF_BRK_TRG_IRQHandler	stm8s_it.h	100;"	prototype	signature:(void)
+TIM5_UPD_OVF_BRK_TRG_IRQHandler	stm8s_it.h	98;"	prototype	signature:(void)
 TIM5_struct	inc\stm8s.h	1121;"	struct
 TIM6	inc\stm8s.h	2697;"	macro
 TIM6_ARR_ARR	inc\stm8s.h	1319;"	macro
@@ -2968,20 +2967,18 @@ TIM6_SR1_RESET_VALUE	inc\stm8s.h	1280;"	macro
 TIM6_SR1_TIF	inc\stm8s.h	1309;"	macro
 TIM6_SR1_UIF	inc\stm8s.h	1310;"	macro
 TIM6_TypeDef	inc\stm8s.h	1272;"	typedef	typeref:struct:TIM6_struct
-TIM6_UPD_OVF_TRG_IRQHandler	stm8s_it.h	143;"	prototype	signature:(void)
+TIM6_UPD_OVF_TRG_IRQHandler	stm8s_it.h	141;"	prototype	signature:(void)
 TIM6_struct	inc\stm8s.h	1260;"	struct
 TINY	inc\stm8s.h	124;"	macro
 TINY	inc\stm8s.h	130;"	macro
 TINY	inc\stm8s.h	144;"	macro
-TLI_IRQHandler	stm8s_it.h	77;"	prototype	signature:(void)
+TLI_IRQHandler	stm8s_it.h	75;"	prototype	signature:(void)
 TPR	inc\stm8s.h	2179;"	member	struct:__anon5
-TRAP_IRQHandler	stm8s_it.h	76;"	prototype	signature:(void)
+TRAP_IRQHandler	stm8s_it.h	74;"	prototype	signature:(void)
 TRISER	inc\stm8s.h	1343;"	member	struct:I2C_struct
 TRUE	inc\stm8s.h	231;"	enumerator	enum:__anon1
 TSR	inc\stm8s.h	2178;"	member	struct:__anon5
 TXCRCR	inc\stm8s.h	1705;"	member	struct:SPI_struct
-ToggleLED	stm8s_it.c	80;"	function	signature:(void)
-ToggleLED	stm8s_it.h	66;"	prototype	signature:(void)
 TxMailbox	inc\stm8s.h	2205;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon7
 U16_MAX	inc\stm8s.h	243;"	macro
 U32_MAX	inc\stm8s.h	246;"	macro
@@ -3031,7 +3028,7 @@ UART1_CR5_RESET_VALUE	inc\stm8s.h	1794;"	macro
 UART1_CR5_SCEN	inc\stm8s.h	1850;"	macro
 UART1_GTR_RESET_VALUE	inc\stm8s.h	1795;"	macro
 UART1_PSCR_RESET_VALUE	inc\stm8s.h	1796;"	macro
-UART1_RX_IRQHandler	stm8s_it.h	116;"	prototype	signature:(void)
+UART1_RX_IRQHandler	stm8s_it.h	114;"	prototype	signature:(void)
 UART1_SR_FE	inc\stm8s.h	1812;"	macro
 UART1_SR_IDLE	inc\stm8s.h	1809;"	macro
 UART1_SR_NF	inc\stm8s.h	1811;"	macro
@@ -3041,7 +3038,7 @@ UART1_SR_RESET_VALUE	inc\stm8s.h	1787;"	macro
 UART1_SR_RXNE	inc\stm8s.h	1808;"	macro
 UART1_SR_TC	inc\stm8s.h	1807;"	macro
 UART1_SR_TXE	inc\stm8s.h	1806;"	macro
-UART1_TX_IRQHandler	stm8s_it.h	115;"	prototype	signature:(void)
+UART1_TX_IRQHandler	stm8s_it.h	113;"	prototype	signature:(void)
 UART1_TypeDef	inc\stm8s.h	1781;"	typedef	typeref:struct:UART1_struct
 UART1_struct	inc\stm8s.h	1767;"	struct
 UART2	inc\stm8s.h	2664;"	macro
@@ -3171,7 +3168,7 @@ UART2_PARITY_NO	inc\stm8s_uart2.h	84;"	enumerator	enum:__anon142
 UART2_PARITY_ODD	inc\stm8s_uart2.h	86;"	enumerator	enum:__anon142
 UART2_PSCR_RESET_VALUE	inc\stm8s.h	1896;"	macro
 UART2_Parity_TypeDef	inc\stm8s_uart2.h	87;"	typedef	typeref:enum:__anon142
-UART2_RX_IRQHandler	stm8s_it.h	127;"	prototype	signature:(void)
+UART2_RX_IRQHandler	stm8s_it.h	125;"	prototype	signature:(void)
 UART2_ReceiveData8	inc\stm8s_uart2.h	422;"	prototype	signature:(void)
 UART2_ReceiveData8	src\stm8s_uart2.c	487;"	function	signature:(void)
 UART2_ReceiveData9	inc\stm8s_uart2.h	423;"	prototype	signature:(void)
@@ -3217,7 +3214,7 @@ UART2_SmartCardNACKCmd	inc\stm8s_uart2.h	419;"	prototype	signature:(FunctionalSt
 UART2_SmartCardNACKCmd	src\stm8s_uart2.c	429;"	function	signature:(FunctionalState NewState)
 UART2_StopBits_TypeDef	inc\stm8s_uart2.h	78;"	typedef	typeref:enum:__anon141
 UART2_SyncMode_TypeDef	inc\stm8s_uart2.h	118;"	typedef	typeref:enum:__anon146
-UART2_TX_IRQHandler	stm8s_it.h	128;"	prototype	signature:(void)
+UART2_TX_IRQHandler	stm8s_it.h	126;"	prototype	signature:(void)
 UART2_TypeDef	inc\stm8s.h	1880;"	typedef	typeref:struct:UART2_struct
 UART2_WAKEUP_ADDRESSMARK	inc\stm8s_uart2.h	59;"	enumerator	enum:__anon139
 UART2_WAKEUP_IDLELINE	inc\stm8s_uart2.h	58;"	enumerator	enum:__anon139
@@ -3268,7 +3265,7 @@ UART3_CR6_LHDIEN	inc\stm8s.h	2051;"	macro
 UART3_CR6_LSF	inc\stm8s.h	2053;"	macro
 UART3_CR6_LSLV	inc\stm8s.h	2049;"	macro
 UART3_CR6_RESET_VALUE	inc\stm8s.h	1998;"	macro
-UART3_RX_IRQHandler	stm8s_it.h	132;"	prototype	signature:(void)
+UART3_RX_IRQHandler	stm8s_it.h	130;"	prototype	signature:(void)
 UART3_SR_FE	inc\stm8s.h	2014;"	macro
 UART3_SR_IDLE	inc\stm8s.h	2011;"	macro
 UART3_SR_NF	inc\stm8s.h	2013;"	macro
@@ -3278,7 +3275,7 @@ UART3_SR_RESET_VALUE	inc\stm8s.h	1991;"	macro
 UART3_SR_RXNE	inc\stm8s.h	2010;"	macro
 UART3_SR_TC	inc\stm8s.h	2009;"	macro
 UART3_SR_TXE	inc\stm8s.h	2008;"	macro
-UART3_TX_IRQHandler	stm8s_it.h	133;"	prototype	signature:(void)
+UART3_TX_IRQHandler	stm8s_it.h	131;"	prototype	signature:(void)
 UART3_TypeDef	inc\stm8s.h	1985;"	typedef	typeref:struct:UART3_struct
 UART3_struct	inc\stm8s.h	1972;"	struct
 UART4	inc\stm8s.h	2673;"	macro
@@ -3333,7 +3330,7 @@ UART4_CR6_LSLV	inc\stm8s.h	2156;"	macro
 UART4_CR6_RESET_VALUE	inc\stm8s.h	2093;"	macro
 UART4_GTR_RESET_VALUE	inc\stm8s.h	2094;"	macro
 UART4_PSCR_RESET_VALUE	inc\stm8s.h	2095;"	macro
-UART4_RX_IRQHandler	stm8s_it.h	121;"	prototype	signature:(void)
+UART4_RX_IRQHandler	stm8s_it.h	119;"	prototype	signature:(void)
 UART4_SR_FE	inc\stm8s.h	2111;"	macro
 UART4_SR_IDLE	inc\stm8s.h	2108;"	macro
 UART4_SR_NF	inc\stm8s.h	2110;"	macro
@@ -3343,7 +3340,7 @@ UART4_SR_RESET_VALUE	inc\stm8s.h	2085;"	macro
 UART4_SR_RXNE	inc\stm8s.h	2107;"	macro
 UART4_SR_TC	inc\stm8s.h	2106;"	macro
 UART4_SR_TXE	inc\stm8s.h	2105;"	macro
-UART4_TX_IRQHandler	stm8s_it.h	120;"	prototype	signature:(void)
+UART4_TX_IRQHandler	stm8s_it.h	118;"	prototype	signature:(void)
 UART4_TypeDef	inc\stm8s.h	2079;"	typedef	typeref:struct:UART4_struct
 UART4_struct	inc\stm8s.h	2064;"	struct
 UNUSED	inc\stm8s.h	2805;"	macro
@@ -3409,7 +3406,7 @@ __STM8S_TIM3_H	inc\stm8s_tim3.h	30;"	macro
 __STM8S_TIM4_H	inc\stm8s_tim4.h	30;"	macro
 __STM8S_UART2_H	inc\stm8s_uart2.h	30;"	macro
 __STM8S_WWDG_H	inc\stm8s_wwdg.h	30;"	macro
-_stext	stm8s_it.h	71;"	prototype	signature:(void)
+_stext	stm8s_it.h	69;"	prototype	signature:(void)
 _vectab	stm8_interrupt_vector.c	14;"	variable
 assert_failed	inc\stm8s_conf.h	108;"	prototype	signature:(uint8_t* file, uint32_t line)
 assert_param	inc\stm8s_conf.h	106;"	macro
@@ -3432,7 +3429,7 @@ interrupt_handler	stm8_interrupt_vector.c	11;"	member	struct:interrupt_vector	fi
 interrupt_handler_t	stm8_interrupt_vector.c	7;"	typedef	file:
 interrupt_instruction	stm8_interrupt_vector.c	10;"	member	struct:interrupt_vector	file:
 interrupt_vector	stm8_interrupt_vector.c	9;"	struct	file:
-main	main.c	44;"	function	signature:(void)
+main	main.c	47;"	function	signature:(void)
 nop	inc\stm8s.h	2720;"	macro
 nop	inc\stm8s.h	2729;"	macro
 nop	inc\stm8s.h	2739;"	macro
