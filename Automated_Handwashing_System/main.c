@@ -62,6 +62,9 @@ int main(void)
 	uint32_t soapDispensationTime = 10000; //10 secs default
 	uint32_t soapValveShutOffTime = 60000; //1 minute default
 	uint8_t soapFlowDisabled = 0;
+	uint8_t soapDispenseStarted = 0;
+	uint8_t soapValveShutOff = 0;
+	uint8_t firstTickMeasured = 0;
 	uint32_t currentTick = 0;
 	
 	disableInterrupts();
@@ -100,25 +103,49 @@ int main(void)
 	
 	while (1)
 	{
-		if(!soapFlowDisabled)
+		//Read soap sensor and actuate soap valve 
+		if(!GPIO_ReadInputPin(SOAP_SENSOR_PORT,SOAP_SENSOR))
 		{
-			if(!GPIO_ReadInputPin(SOAP_SENSOR_PORT,SOAP_SENSOR))
+			if(!soapFlowDisabled)
 			{
 				GPIO_WriteHigh(SOAP_VALVE_PORT,SOAP_VALVE);
-				DelayMs(soapDispensationTime);
-				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
-				StartTogglingLED();
-				soapFlowDisabled = 1;
-				currentTick = GetTick();
+				soapDispenseStarted = 1;
+				if(!firstTickMeasured)
+				{
+					currentTick = GetTick();
+					firstTickMeasured = 1;
+				}
 			}
 		}
 		else
 		{
+			GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+		}
+		//If soap dispensation time has elapsed, shut-off ..
+		//the soap valve and start blinking LED
+		if(soapDispenseStarted)
+		{
+			if((GetTick() - currentTick) >= soapDispensationTime)
+			{
+				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+				soapFlowDisabled = 1;
+				soapValveShutOff = 1;
+				soapDispenseStarted = 0;
+				currentTick = GetTick();
+				StartTogglingLED();
+			}
+		}
+		//If valve shut off time has elapsed, restore ....
+		//soap valve and sensor
+		if(soapValveShutOff)
+		{
 			if((GetTick() - currentTick) >= soapValveShutOffTime)
 			{
-				StopTogglingLED();
+				soapValveShutOff = 0;
 				soapFlowDisabled = 0;
+				firstTickMeasured = 0;
+				StopTogglingLED();
 			}
-		}									 
+		}
 	}
 }
