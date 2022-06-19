@@ -58,7 +58,7 @@
 #define SOAP_LED						GPIO_PIN_4
 
 #define POWER_LED_PORT			GPIOB
-#define POWER_LED						GPIO_PIN_5
+#define POWER_LED						GPIO_PIN_4
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

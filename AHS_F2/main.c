@@ -42,20 +42,7 @@
 //2. Fan = PD3
 //3. Water valve = PD4
 //4. Soap LED = PF4
-//5. Power LED = PB5
-
-static void IndicatePowerOn(void)
-{
-	uint8_t i = 0;
-	while(i < 3)
-	{
-		GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
-		DelayMs(500);
-		GPIO_WriteLow(POWER_LED_PORT,POWER_LED);
-		DelayMs(500);
-		i++;
-	}	
-}
+//5. Power LED = PB4
 
 int main(void)
 {
@@ -99,8 +86,10 @@ int main(void)
 	TIM2_Cmd(ENABLE);
 
 	enableInterrupts();
-	//Blink power LED to signify a power cycle
-	IndicatePowerOn();
+	//Indicate power on
+	GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
+	DelayMs(3000);
+	GPIO_WriteLow(POWER_LED_PORT,POWER_LED);
 	
 	while (1)
 	{

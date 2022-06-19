@@ -1,291 +1,264 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.12.6 - 16 Dec 2021
    3                     ; Generator (Limited) V4.5.4 - 16 Dec 2021
-  56                     ; 47 static void IndicatePowerOn(void)
-  56                     ; 48 {
-  58                     	switch	.text
-  59  0000               L3_IndicatePowerOn:
-  61  0000 88            	push	a
-  62       00000001      OFST:	set	1
-  65                     ; 49 	uint8_t i = 0;
-  67  0001 0f01          	clr	(OFST+0,sp)
-  69  0003               L13:
-  70                     ; 52 		GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
-  72  0003 4b20          	push	#32
-  73  0005 ae5005        	ldw	x,#20485
-  74  0008 cd0000        	call	_GPIO_WriteHigh
-  76  000b 84            	pop	a
-  77                     ; 53 		DelayMs(500);
-  79  000c ae01f4        	ldw	x,#500
-  80  000f 89            	pushw	x
-  81  0010 ae0000        	ldw	x,#0
-  82  0013 89            	pushw	x
-  83  0014 cd0000        	call	_DelayMs
-  85  0017 5b04          	addw	sp,#4
-  86                     ; 54 		GPIO_WriteLow(POWER_LED_PORT,POWER_LED);
-  88  0019 4b20          	push	#32
-  89  001b ae5005        	ldw	x,#20485
-  90  001e cd0000        	call	_GPIO_WriteLow
-  92  0021 84            	pop	a
-  93                     ; 55 		DelayMs(500);
-  95  0022 ae01f4        	ldw	x,#500
-  96  0025 89            	pushw	x
-  97  0026 ae0000        	ldw	x,#0
-  98  0029 89            	pushw	x
-  99  002a cd0000        	call	_DelayMs
- 101  002d 5b04          	addw	sp,#4
- 102                     ; 56 		i++;
- 104  002f 0c01          	inc	(OFST+0,sp)
- 106                     ; 50 	while(i < 3)
- 108  0031 7b01          	ld	a,(OFST+0,sp)
- 109  0033 a103          	cp	a,#3
- 110  0035 25cc          	jrult	L13
- 111                     ; 58 }
- 114  0037 84            	pop	a
- 115  0038 81            	ret
- 223                     ; 60 int main(void)
- 223                     ; 61 {
- 224                     	switch	.text
- 225  0039               _main:
- 227  0039 5210          	subw	sp,#16
- 228       00000010      OFST:	set	16
- 231                     ; 63 	uint32_t soapDispensationTime = 10000; //10 secs default
- 233  003b ae2710        	ldw	x,#10000
- 234  003e 1f03          	ldw	(OFST-13,sp),x
- 235  0040 ae0000        	ldw	x,#0
- 236  0043 1f01          	ldw	(OFST-15,sp),x
- 238                     ; 64 	uint32_t soapValveShutOffTime = 60000; //1 minute default
- 240  0045 aeea60        	ldw	x,#60000
- 241  0048 1f07          	ldw	(OFST-9,sp),x
- 242  004a ae0000        	ldw	x,#0
- 243  004d 1f05          	ldw	(OFST-11,sp),x
- 245                     ; 65 	uint8_t soapFlowDisabled = 0;
- 247  004f 0f09          	clr	(OFST-7,sp)
- 249                     ; 66 	uint8_t soapDispenseStarted = 0;
- 251  0051 0f0a          	clr	(OFST-6,sp)
- 253                     ; 67 	uint8_t soapValveShutOff = 0;
- 255  0053 0f0b          	clr	(OFST-5,sp)
- 257                     ; 68 	uint8_t firstTickMeasured = 0;
- 259  0055 0f0c          	clr	(OFST-4,sp)
- 261                     ; 69 	uint32_t currTick = 0; //current tick
- 263  0057 ae0000        	ldw	x,#0
- 264  005a 1f0f          	ldw	(OFST-1,sp),x
- 265  005c ae0000        	ldw	x,#0
- 266  005f 1f0d          	ldw	(OFST-3,sp),x
- 268                     ; 71 	disableInterrupts();
- 271  0061 9b            sim
- 273                     ; 73 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
- 276  0062 4f            	clr	a
- 277  0063 cd0000        	call	_CLK_HSIPrescalerConfig
- 279                     ; 75 	GPIO_Init(SOAP_SENSOR_PORT,SOAP_SENSOR,SENSOR_INIT);
- 281  0066 4b40          	push	#64
- 282  0068 4b01          	push	#1
- 283  006a ae5005        	ldw	x,#20485
- 284  006d cd0000        	call	_GPIO_Init
- 286  0070 85            	popw	x
- 287                     ; 76 	GPIO_Init(FAN_SENSOR_PORT,FAN_SENSOR,SENSOR_INIT);
- 289  0071 4b40          	push	#64
- 290  0073 4b02          	push	#2
- 291  0075 ae5005        	ldw	x,#20485
- 292  0078 cd0000        	call	_GPIO_Init
- 294  007b 85            	popw	x
- 295                     ; 77 	GPIO_Init(WATER_SENSOR_PORT,WATER_SENSOR,SENSOR_INIT);
- 297  007c 4b40          	push	#64
- 298  007e 4b04          	push	#4
- 299  0080 ae5005        	ldw	x,#20485
- 300  0083 cd0000        	call	_GPIO_Init
- 302  0086 85            	popw	x
- 303                     ; 79 	GPIO_Init(SOAP_VALVE_PORT,SOAP_VALVE,OUTPUT_INIT);
- 305  0087 4be0          	push	#224
- 306  0089 4b04          	push	#4
- 307  008b ae500f        	ldw	x,#20495
- 308  008e cd0000        	call	_GPIO_Init
- 310  0091 85            	popw	x
- 311                     ; 80 	GPIO_Init(FAN_PORT,FAN,OUTPUT_INIT);
- 313  0092 4be0          	push	#224
- 314  0094 4b08          	push	#8
- 315  0096 ae500f        	ldw	x,#20495
- 316  0099 cd0000        	call	_GPIO_Init
- 318  009c 85            	popw	x
- 319                     ; 81 	GPIO_Init(WATER_VALVE_PORT,WATER_VALVE,OUTPUT_INIT);
- 321  009d 4be0          	push	#224
- 322  009f 4b10          	push	#16
- 323  00a1 ae500f        	ldw	x,#20495
- 324  00a4 cd0000        	call	_GPIO_Init
- 326  00a7 85            	popw	x
- 327                     ; 82 	GPIO_Init(SOAP_LED_PORT,SOAP_LED,OUTPUT_INIT);
- 329  00a8 4be0          	push	#224
- 330  00aa 4b10          	push	#16
- 331  00ac ae5019        	ldw	x,#20505
- 332  00af cd0000        	call	_GPIO_Init
- 334  00b2 85            	popw	x
- 335                     ; 83 	GPIO_Init(POWER_LED_PORT,POWER_LED,OUTPUT_INIT);
- 337  00b3 4be0          	push	#224
- 338  00b5 4b20          	push	#32
- 339  00b7 ae5005        	ldw	x,#20485
- 340  00ba cd0000        	call	_GPIO_Init
- 342  00bd 85            	popw	x
- 343                     ; 85 	GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
- 345  00be 4b04          	push	#4
- 346  00c0 ae500f        	ldw	x,#20495
- 347  00c3 cd0000        	call	_GPIO_WriteLow
- 349  00c6 84            	pop	a
- 350                     ; 86 	GPIO_WriteLow(FAN_PORT,FAN);
- 352  00c7 4b08          	push	#8
- 353  00c9 ae500f        	ldw	x,#20495
- 354  00cc cd0000        	call	_GPIO_WriteLow
- 356  00cf 84            	pop	a
- 357                     ; 87 	GPIO_WriteHigh(WATER_VALVE_PORT,WATER_VALVE); //Active low
- 359  00d0 4b10          	push	#16
- 360  00d2 ae500f        	ldw	x,#20495
- 361  00d5 cd0000        	call	_GPIO_WriteHigh
- 363  00d8 84            	pop	a
- 364                     ; 88 	GPIO_WriteLow(SOAP_LED_PORT,SOAP_LED);
- 366  00d9 4b10          	push	#16
- 367  00db ae5019        	ldw	x,#20505
- 368  00de cd0000        	call	_GPIO_WriteLow
- 370  00e1 84            	pop	a
- 371                     ; 92 	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
- 373  00e2 4b00          	push	#0
- 374  00e4 ae007c        	ldw	x,#124
- 375  00e7 89            	pushw	x
- 376  00e8 4b00          	push	#0
- 377  00ea ae0080        	ldw	x,#128
- 378  00ed cd0000        	call	_TIM1_TimeBaseInit
- 380  00f0 5b04          	addw	sp,#4
- 381                     ; 93 	TIM1_ITConfig(TIM1_IT_UPDATE,ENABLE);
- 383  00f2 ae0101        	ldw	x,#257
- 384  00f5 cd0000        	call	_TIM1_ITConfig
- 386                     ; 94 	TIM1_Cmd(ENABLE);
- 388  00f8 a601          	ld	a,#1
- 389  00fa cd0000        	call	_TIM1_Cmd
- 391                     ; 97 	TIM2_TimeBaseInit(TIM2_PRESCALER_128,1249);
- 393  00fd ae04e1        	ldw	x,#1249
- 394  0100 89            	pushw	x
- 395  0101 a607          	ld	a,#7
- 396  0103 cd0000        	call	_TIM2_TimeBaseInit
- 398  0106 85            	popw	x
- 399                     ; 98 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
- 401  0107 ae0101        	ldw	x,#257
- 402  010a cd0000        	call	_TIM2_ITConfig
- 404                     ; 99 	TIM2_Cmd(ENABLE);
- 406  010d a601          	ld	a,#1
- 407  010f cd0000        	call	_TIM2_Cmd
- 409                     ; 101 	enableInterrupts();
- 412  0112 9a            rim
- 414                     ; 103 	IndicatePowerOn();
- 417  0113 cd0000        	call	L3_IndicatePowerOn
- 419  0116               L501:
- 420                     ; 108 		if(!GPIO_ReadInputPin(SOAP_SENSOR_PORT,SOAP_SENSOR))
- 422  0116 4b01          	push	#1
- 423  0118 ae5005        	ldw	x,#20485
- 424  011b cd0000        	call	_GPIO_ReadInputPin
- 426  011e 5b01          	addw	sp,#1
- 427  0120 4d            	tnz	a
- 428  0121 2625          	jrne	L111
- 429                     ; 110 			if(!soapFlowDisabled)
- 431  0123 0d09          	tnz	(OFST-7,sp)
- 432  0125 262a          	jrne	L711
- 433                     ; 112 				GPIO_WriteHigh(SOAP_VALVE_PORT,SOAP_VALVE);
- 435  0127 4b04          	push	#4
- 436  0129 ae500f        	ldw	x,#20495
- 437  012c cd0000        	call	_GPIO_WriteHigh
- 439  012f 84            	pop	a
- 440                     ; 113 				soapDispenseStarted = 1;
- 442  0130 a601          	ld	a,#1
- 443  0132 6b0a          	ld	(OFST-6,sp),a
- 445                     ; 114 				if(!firstTickMeasured)
- 447  0134 0d0c          	tnz	(OFST-4,sp)
- 448  0136 2619          	jrne	L711
- 449                     ; 116 					currTick = GetTick();
- 451  0138 cd0000        	call	_GetTick
- 453  013b 96            	ldw	x,sp
- 454  013c 1c000d        	addw	x,#OFST-3
- 455  013f cd0000        	call	c_rtol
- 458                     ; 117 					firstTickMeasured = 1;
- 460  0142 a601          	ld	a,#1
- 461  0144 6b0c          	ld	(OFST-4,sp),a
- 463  0146 2009          	jra	L711
- 464  0148               L111:
- 465                     ; 123 			GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
- 467  0148 4b04          	push	#4
- 468  014a ae500f        	ldw	x,#20495
- 469  014d cd0000        	call	_GPIO_WriteLow
- 471  0150 84            	pop	a
- 472  0151               L711:
- 473                     ; 127 		if(soapDispenseStarted)
- 475  0151 0d0a          	tnz	(OFST-6,sp)
- 476  0153 2733          	jreq	L121
- 477                     ; 129 			if((GetTick() - currTick) >= soapDispensationTime)
- 479  0155 cd0000        	call	_GetTick
- 481  0158 96            	ldw	x,sp
- 482  0159 1c000d        	addw	x,#OFST-3
- 483  015c cd0000        	call	c_lsub
- 485  015f 96            	ldw	x,sp
- 486  0160 1c0001        	addw	x,#OFST-15
- 487  0163 cd0000        	call	c_lcmp
- 489  0166 2520          	jrult	L121
- 490                     ; 131 				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
- 492  0168 4b04          	push	#4
- 493  016a ae500f        	ldw	x,#20495
- 494  016d cd0000        	call	_GPIO_WriteLow
- 496  0170 84            	pop	a
- 497                     ; 132 				soapFlowDisabled = 1;
- 499  0171 a601          	ld	a,#1
- 500  0173 6b09          	ld	(OFST-7,sp),a
- 502                     ; 133 				soapValveShutOff = 1;
- 504  0175 a601          	ld	a,#1
- 505  0177 6b0b          	ld	(OFST-5,sp),a
- 507                     ; 134 				soapDispenseStarted = 0;
- 509  0179 0f0a          	clr	(OFST-6,sp)
- 511                     ; 135 				currTick = GetTick();
- 513  017b cd0000        	call	_GetTick
- 515  017e 96            	ldw	x,sp
- 516  017f 1c000d        	addw	x,#OFST-3
- 517  0182 cd0000        	call	c_rtol
- 520                     ; 136 				StartTogglingLED();
- 522  0185 cd0000        	call	_StartTogglingLED
- 524  0188               L121:
- 525                     ; 141 		if(soapValveShutOff)
- 527  0188 0d0b          	tnz	(OFST-5,sp)
- 528  018a 278a          	jreq	L501
- 529                     ; 143 			if((GetTick() - currTick) >= soapValveShutOffTime)
- 531  018c cd0000        	call	_GetTick
- 533  018f 96            	ldw	x,sp
- 534  0190 1c000d        	addw	x,#OFST-3
- 535  0193 cd0000        	call	c_lsub
- 537  0196 96            	ldw	x,sp
- 538  0197 1c0005        	addw	x,#OFST-11
- 539  019a cd0000        	call	c_lcmp
- 541  019d 2403          	jruge	L01
- 542  019f cc0116        	jp	L501
- 543  01a2               L01:
- 544                     ; 145 				soapValveShutOff = 0;
- 546  01a2 0f0b          	clr	(OFST-5,sp)
- 548                     ; 146 				soapFlowDisabled = 0;
- 550  01a4 0f09          	clr	(OFST-7,sp)
- 552                     ; 147 				firstTickMeasured = 0;
- 554  01a6 0f0c          	clr	(OFST-4,sp)
- 556                     ; 148 				StopTogglingLED();
- 558  01a8 cd0000        	call	_StopTogglingLED
- 560  01ab ac160116      	jpf	L501
- 573                     	xdef	_main
- 574                     	xref	_StopTogglingLED
- 575                     	xref	_StartTogglingLED
- 576                     	xref	_DelayMs
- 577                     	xref	_GetTick
- 578                     	xref	_TIM2_ITConfig
- 579                     	xref	_TIM2_Cmd
- 580                     	xref	_TIM2_TimeBaseInit
- 581                     	xref	_TIM1_ITConfig
- 582                     	xref	_TIM1_Cmd
- 583                     	xref	_TIM1_TimeBaseInit
- 584                     	xref	_GPIO_ReadInputPin
- 585                     	xref	_GPIO_WriteLow
- 586                     	xref	_GPIO_WriteHigh
- 587                     	xref	_GPIO_Init
- 588                     	xref	_CLK_HSIPrescalerConfig
- 607                     	xref	c_lcmp
- 608                     	xref	c_lsub
- 609                     	xref	c_rtol
- 610                     	end
+ 127                     ; 47 int main(void)
+ 127                     ; 48 {
+ 129                     	switch	.text
+ 130  0000               _main:
+ 132  0000 5210          	subw	sp,#16
+ 133       00000010      OFST:	set	16
+ 136                     ; 50 	uint32_t soapDispensationTime = 10000; //10 secs default
+ 138  0002 ae2710        	ldw	x,#10000
+ 139  0005 1f03          	ldw	(OFST-13,sp),x
+ 140  0007 ae0000        	ldw	x,#0
+ 141  000a 1f01          	ldw	(OFST-15,sp),x
+ 143                     ; 51 	uint32_t soapValveShutOffTime = 60000; //1 minute default
+ 145  000c aeea60        	ldw	x,#60000
+ 146  000f 1f07          	ldw	(OFST-9,sp),x
+ 147  0011 ae0000        	ldw	x,#0
+ 148  0014 1f05          	ldw	(OFST-11,sp),x
+ 150                     ; 52 	uint8_t soapFlowDisabled = 0;
+ 152  0016 0f09          	clr	(OFST-7,sp)
+ 154                     ; 53 	uint8_t soapDispenseStarted = 0;
+ 156  0018 0f0a          	clr	(OFST-6,sp)
+ 158                     ; 54 	uint8_t soapValveShutOff = 0;
+ 160  001a 0f0b          	clr	(OFST-5,sp)
+ 162                     ; 55 	uint8_t firstTickMeasured = 0;
+ 164  001c 0f0c          	clr	(OFST-4,sp)
+ 166                     ; 56 	uint32_t currTick = 0; //current tick
+ 168  001e ae0000        	ldw	x,#0
+ 169  0021 1f0f          	ldw	(OFST-1,sp),x
+ 170  0023 ae0000        	ldw	x,#0
+ 171  0026 1f0d          	ldw	(OFST-3,sp),x
+ 173                     ; 58 	disableInterrupts();
+ 176  0028 9b            sim
+ 178                     ; 60 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+ 181  0029 4f            	clr	a
+ 182  002a cd0000        	call	_CLK_HSIPrescalerConfig
+ 184                     ; 62 	GPIO_Init(SOAP_SENSOR_PORT,SOAP_SENSOR,SENSOR_INIT);
+ 186  002d 4b40          	push	#64
+ 187  002f 4b01          	push	#1
+ 188  0031 ae5005        	ldw	x,#20485
+ 189  0034 cd0000        	call	_GPIO_Init
+ 191  0037 85            	popw	x
+ 192                     ; 63 	GPIO_Init(FAN_SENSOR_PORT,FAN_SENSOR,SENSOR_INIT);
+ 194  0038 4b40          	push	#64
+ 195  003a 4b02          	push	#2
+ 196  003c ae5005        	ldw	x,#20485
+ 197  003f cd0000        	call	_GPIO_Init
+ 199  0042 85            	popw	x
+ 200                     ; 64 	GPIO_Init(WATER_SENSOR_PORT,WATER_SENSOR,SENSOR_INIT);
+ 202  0043 4b40          	push	#64
+ 203  0045 4b04          	push	#4
+ 204  0047 ae5005        	ldw	x,#20485
+ 205  004a cd0000        	call	_GPIO_Init
+ 207  004d 85            	popw	x
+ 208                     ; 66 	GPIO_Init(SOAP_VALVE_PORT,SOAP_VALVE,OUTPUT_INIT);
+ 210  004e 4be0          	push	#224
+ 211  0050 4b04          	push	#4
+ 212  0052 ae500f        	ldw	x,#20495
+ 213  0055 cd0000        	call	_GPIO_Init
+ 215  0058 85            	popw	x
+ 216                     ; 67 	GPIO_Init(FAN_PORT,FAN,OUTPUT_INIT);
+ 218  0059 4be0          	push	#224
+ 219  005b 4b08          	push	#8
+ 220  005d ae500f        	ldw	x,#20495
+ 221  0060 cd0000        	call	_GPIO_Init
+ 223  0063 85            	popw	x
+ 224                     ; 68 	GPIO_Init(WATER_VALVE_PORT,WATER_VALVE,OUTPUT_INIT);
+ 226  0064 4be0          	push	#224
+ 227  0066 4b10          	push	#16
+ 228  0068 ae500f        	ldw	x,#20495
+ 229  006b cd0000        	call	_GPIO_Init
+ 231  006e 85            	popw	x
+ 232                     ; 69 	GPIO_Init(SOAP_LED_PORT,SOAP_LED,OUTPUT_INIT);
+ 234  006f 4be0          	push	#224
+ 235  0071 4b10          	push	#16
+ 236  0073 ae5019        	ldw	x,#20505
+ 237  0076 cd0000        	call	_GPIO_Init
+ 239  0079 85            	popw	x
+ 240                     ; 70 	GPIO_Init(POWER_LED_PORT,POWER_LED,OUTPUT_INIT);
+ 242  007a 4be0          	push	#224
+ 243  007c 4b10          	push	#16
+ 244  007e ae5005        	ldw	x,#20485
+ 245  0081 cd0000        	call	_GPIO_Init
+ 247  0084 85            	popw	x
+ 248                     ; 72 	GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+ 250  0085 4b04          	push	#4
+ 251  0087 ae500f        	ldw	x,#20495
+ 252  008a cd0000        	call	_GPIO_WriteLow
+ 254  008d 84            	pop	a
+ 255                     ; 73 	GPIO_WriteLow(FAN_PORT,FAN);
+ 257  008e 4b08          	push	#8
+ 258  0090 ae500f        	ldw	x,#20495
+ 259  0093 cd0000        	call	_GPIO_WriteLow
+ 261  0096 84            	pop	a
+ 262                     ; 74 	GPIO_WriteHigh(WATER_VALVE_PORT,WATER_VALVE); //Active low
+ 264  0097 4b10          	push	#16
+ 265  0099 ae500f        	ldw	x,#20495
+ 266  009c cd0000        	call	_GPIO_WriteHigh
+ 268  009f 84            	pop	a
+ 269                     ; 75 	GPIO_WriteLow(SOAP_LED_PORT,SOAP_LED);
+ 271  00a0 4b10          	push	#16
+ 272  00a2 ae5019        	ldw	x,#20505
+ 273  00a5 cd0000        	call	_GPIO_WriteLow
+ 275  00a8 84            	pop	a
+ 276                     ; 79 	TIM1_TimeBaseInit(128,TIM1_COUNTERMODE_UP,124,0);	
+ 278  00a9 4b00          	push	#0
+ 279  00ab ae007c        	ldw	x,#124
+ 280  00ae 89            	pushw	x
+ 281  00af 4b00          	push	#0
+ 282  00b1 ae0080        	ldw	x,#128
+ 283  00b4 cd0000        	call	_TIM1_TimeBaseInit
+ 285  00b7 5b04          	addw	sp,#4
+ 286                     ; 80 	TIM1_ITConfig(TIM1_IT_UPDATE,ENABLE);
+ 288  00b9 ae0101        	ldw	x,#257
+ 289  00bc cd0000        	call	_TIM1_ITConfig
+ 291                     ; 81 	TIM1_Cmd(ENABLE);
+ 293  00bf a601          	ld	a,#1
+ 294  00c1 cd0000        	call	_TIM1_Cmd
+ 296                     ; 84 	TIM2_TimeBaseInit(TIM2_PRESCALER_128,1249);
+ 298  00c4 ae04e1        	ldw	x,#1249
+ 299  00c7 89            	pushw	x
+ 300  00c8 a607          	ld	a,#7
+ 301  00ca cd0000        	call	_TIM2_TimeBaseInit
+ 303  00cd 85            	popw	x
+ 304                     ; 85 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
+ 306  00ce ae0101        	ldw	x,#257
+ 307  00d1 cd0000        	call	_TIM2_ITConfig
+ 309                     ; 86 	TIM2_Cmd(ENABLE);
+ 311  00d4 a601          	ld	a,#1
+ 312  00d6 cd0000        	call	_TIM2_Cmd
+ 314                     ; 88 	enableInterrupts();
+ 317  00d9 9a            rim
+ 319                     ; 90 	GPIO_WriteHigh(POWER_LED_PORT,POWER_LED);
+ 322  00da 4b10          	push	#16
+ 323  00dc ae5005        	ldw	x,#20485
+ 324  00df cd0000        	call	_GPIO_WriteHigh
+ 326  00e2 84            	pop	a
+ 327                     ; 91 	DelayMs(3000);
+ 329  00e3 ae0bb8        	ldw	x,#3000
+ 330  00e6 89            	pushw	x
+ 331  00e7 ae0000        	ldw	x,#0
+ 332  00ea 89            	pushw	x
+ 333  00eb cd0000        	call	_DelayMs
+ 335  00ee 5b04          	addw	sp,#4
+ 336                     ; 92 	GPIO_WriteLow(POWER_LED_PORT,POWER_LED);
+ 338  00f0 4b10          	push	#16
+ 339  00f2 ae5005        	ldw	x,#20485
+ 340  00f5 cd0000        	call	_GPIO_WriteLow
+ 342  00f8 84            	pop	a
+ 343  00f9               L75:
+ 344                     ; 97 		if(!GPIO_ReadInputPin(SOAP_SENSOR_PORT,SOAP_SENSOR))
+ 346  00f9 4b01          	push	#1
+ 347  00fb ae5005        	ldw	x,#20485
+ 348  00fe cd0000        	call	_GPIO_ReadInputPin
+ 350  0101 5b01          	addw	sp,#1
+ 351  0103 4d            	tnz	a
+ 352  0104 2625          	jrne	L36
+ 353                     ; 99 			if(!soapFlowDisabled)
+ 355  0106 0d09          	tnz	(OFST-7,sp)
+ 356  0108 262a          	jrne	L17
+ 357                     ; 101 				GPIO_WriteHigh(SOAP_VALVE_PORT,SOAP_VALVE);
+ 359  010a 4b04          	push	#4
+ 360  010c ae500f        	ldw	x,#20495
+ 361  010f cd0000        	call	_GPIO_WriteHigh
+ 363  0112 84            	pop	a
+ 364                     ; 102 				soapDispenseStarted = 1;
+ 366  0113 a601          	ld	a,#1
+ 367  0115 6b0a          	ld	(OFST-6,sp),a
+ 369                     ; 103 				if(!firstTickMeasured)
+ 371  0117 0d0c          	tnz	(OFST-4,sp)
+ 372  0119 2619          	jrne	L17
+ 373                     ; 105 					currTick = GetTick();
+ 375  011b cd0000        	call	_GetTick
+ 377  011e 96            	ldw	x,sp
+ 378  011f 1c000d        	addw	x,#OFST-3
+ 379  0122 cd0000        	call	c_rtol
+ 382                     ; 106 					firstTickMeasured = 1;
+ 384  0125 a601          	ld	a,#1
+ 385  0127 6b0c          	ld	(OFST-4,sp),a
+ 387  0129 2009          	jra	L17
+ 388  012b               L36:
+ 389                     ; 112 			GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+ 391  012b 4b04          	push	#4
+ 392  012d ae500f        	ldw	x,#20495
+ 393  0130 cd0000        	call	_GPIO_WriteLow
+ 395  0133 84            	pop	a
+ 396  0134               L17:
+ 397                     ; 116 		if(soapDispenseStarted)
+ 399  0134 0d0a          	tnz	(OFST-6,sp)
+ 400  0136 2733          	jreq	L37
+ 401                     ; 118 			if((GetTick() - currTick) >= soapDispensationTime)
+ 403  0138 cd0000        	call	_GetTick
+ 405  013b 96            	ldw	x,sp
+ 406  013c 1c000d        	addw	x,#OFST-3
+ 407  013f cd0000        	call	c_lsub
+ 409  0142 96            	ldw	x,sp
+ 410  0143 1c0001        	addw	x,#OFST-15
+ 411  0146 cd0000        	call	c_lcmp
+ 413  0149 2520          	jrult	L37
+ 414                     ; 120 				GPIO_WriteLow(SOAP_VALVE_PORT,SOAP_VALVE);
+ 416  014b 4b04          	push	#4
+ 417  014d ae500f        	ldw	x,#20495
+ 418  0150 cd0000        	call	_GPIO_WriteLow
+ 420  0153 84            	pop	a
+ 421                     ; 121 				soapFlowDisabled = 1;
+ 423  0154 a601          	ld	a,#1
+ 424  0156 6b09          	ld	(OFST-7,sp),a
+ 426                     ; 122 				soapValveShutOff = 1;
+ 428  0158 a601          	ld	a,#1
+ 429  015a 6b0b          	ld	(OFST-5,sp),a
+ 431                     ; 123 				soapDispenseStarted = 0;
+ 433  015c 0f0a          	clr	(OFST-6,sp)
+ 435                     ; 124 				currTick = GetTick();
+ 437  015e cd0000        	call	_GetTick
+ 439  0161 96            	ldw	x,sp
+ 440  0162 1c000d        	addw	x,#OFST-3
+ 441  0165 cd0000        	call	c_rtol
+ 444                     ; 125 				StartTogglingLED();
+ 446  0168 cd0000        	call	_StartTogglingLED
+ 448  016b               L37:
+ 449                     ; 130 		if(soapValveShutOff)
+ 451  016b 0d0b          	tnz	(OFST-5,sp)
+ 452  016d 278a          	jreq	L75
+ 453                     ; 132 			if((GetTick() - currTick) >= soapValveShutOffTime)
+ 455  016f cd0000        	call	_GetTick
+ 457  0172 96            	ldw	x,sp
+ 458  0173 1c000d        	addw	x,#OFST-3
+ 459  0176 cd0000        	call	c_lsub
+ 461  0179 96            	ldw	x,sp
+ 462  017a 1c0005        	addw	x,#OFST-11
+ 463  017d cd0000        	call	c_lcmp
+ 465  0180 2403          	jruge	L6
+ 466  0182 cc00f9        	jp	L75
+ 467  0185               L6:
+ 468                     ; 134 				soapValveShutOff = 0;
+ 470  0185 0f0b          	clr	(OFST-5,sp)
+ 472                     ; 135 				soapFlowDisabled = 0;
+ 474  0187 0f09          	clr	(OFST-7,sp)
+ 476                     ; 136 				firstTickMeasured = 0;
+ 478  0189 0f0c          	clr	(OFST-4,sp)
+ 480                     ; 137 				StopTogglingLED();
+ 482  018b cd0000        	call	_StopTogglingLED
+ 484  018e acf900f9      	jpf	L75
+ 497                     	xdef	_main
+ 498                     	xref	_StopTogglingLED
+ 499                     	xref	_StartTogglingLED
+ 500                     	xref	_DelayMs
+ 501                     	xref	_GetTick
+ 502                     	xref	_TIM2_ITConfig
+ 503                     	xref	_TIM2_Cmd
+ 504                     	xref	_TIM2_TimeBaseInit
+ 505                     	xref	_TIM1_ITConfig
+ 506                     	xref	_TIM1_Cmd
+ 507                     	xref	_TIM1_TimeBaseInit
+ 508                     	xref	_GPIO_ReadInputPin
+ 509                     	xref	_GPIO_WriteLow
+ 510                     	xref	_GPIO_WriteHigh
+ 511                     	xref	_GPIO_Init
+ 512                     	xref	_CLK_HSIPrescalerConfig
+ 531                     	xref	c_lcmp
+ 532                     	xref	c_lsub
+ 533                     	xref	c_rtol
+ 534                     	end
